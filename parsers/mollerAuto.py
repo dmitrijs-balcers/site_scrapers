@@ -2,14 +2,17 @@ from typing import Union, List
 
 import requests
 from gazpacho import Soup
+from returns.maybe import Maybe
 from returns.result import Result, Failure, Success
 
 from models.Car import Car, CarDate
 
+DOMAIN = "https://lietotiauto.mollerauto.lv"
+
 
 def parse_moller_auto() -> None:
     r = requests.post(
-        url="https://lietotiauto.mollerauto.lv/lv/usedcars/search",
+        url=f"{DOMAIN}/lv/usedcars/search",
         data={"ajaxsearch": 1, "search_drivetrain": 10003016},
     )
 
@@ -46,7 +49,8 @@ def parse(car: Soup) -> Result[Car, str]:
         price=get_price(data[1]),
         hp=details[2],
         transmission=details[3],
-        type=details[4]
+        type=details[4],
+        url=f"{DOMAIN}{get_url(summary)}",
     ))
 
 
@@ -59,5 +63,9 @@ def get_price(html: Soup) -> str:
 
     if type(price) is Soup and price:
         return price.text
-    
+
     return html.text
+
+
+def get_url(summary: Soup) -> str:
+    return Maybe.from_optional(summary.attrs).map(lambda v: v["href"]).value_or("")

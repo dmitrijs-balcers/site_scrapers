@@ -4,6 +4,7 @@ CarDate = NamedTuple("CarDate", [("month", str), ("year", str)])
 
 
 class Car(TypedDict):
+    url: str
     summary: str
     date: CarDate
     type: str
