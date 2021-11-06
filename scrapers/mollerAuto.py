@@ -1,8 +1,10 @@
-from typing import Union, List
+from typing import Union, List, Iterable
 
 import requests
 from gazpacho import Soup
 from returns.maybe import Maybe
+from returns.methods import unwrap_or_failure
+from returns.pipeline import is_successful, flow
 from returns.result import Result, Failure, Success
 
 from models.Car import Car, CarDate
@@ -10,7 +12,7 @@ from models.Car import Car, CarDate
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
 
-def parse_moller_auto() -> None:
+def parse_moller_auto() -> Result[Iterable[Car], str]:
     r = requests.post(
         url=f"{DOMAIN}/lv/usedcars/search",
         data={"ajaxsearch": 1, "search_drivetrain": 10003016},
@@ -23,9 +25,13 @@ def parse_moller_auto() -> None:
     cars = soup.find("div", {"class": "vehicle"})
 
     if type(cars) is not list:
-        return
+        return Failure("issue parsing vehicles")
 
-    print(*[parse(car) for car in cars], sep="\n")
+    return Success(flow(
+        [parse(car) for car in cars],
+        lambda _: filter(is_successful, _),
+        lambda _: [unwrap_or_failure(car) for car in _],
+    ))
 
 
 def parse(car: Soup) -> Result[Car, str]:
