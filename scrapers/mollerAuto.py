@@ -7,7 +7,7 @@ from returns.methods import unwrap_or_failure
 from returns.pipeline import is_successful, flow
 from returns.result import Result, Failure, Success
 
-from src.models.Car import Car, CarDate
+from models.Car import Car, CarDate
 
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
