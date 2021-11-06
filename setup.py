@@ -7,6 +7,9 @@ import setuptools
 # python -m twine upload -r testpypi --skip-existing dist/*
 # python -m twine upload --skip-existing dist/*
 
+# python setup.py sdist
+# twine upload dist/*
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
@@ -18,7 +21,7 @@ print(requirements)
 
 setuptools.setup(
     name="site-scrapers",  # This is the name of the package
-    version="0.0.6",  # The initial release version
+    version="0.0.7",  # The initial release version
     author="Dmitrijs Balcers",  # Full name of the author
     description="Scrape cars from dealerships",
     long_description=long_description,  # Long description read from the the readme file
@@ -33,6 +36,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],  # Information to filter the project on PyPi website
+    url="https://github.com/dmitrijs-balcers/site-scrapers/",
     python_requires='>=3.9',  # Minimum version requirement of the package
     py_modules=["site-scrapers"],  # Name of the python package
     install_requires=[
