@@ -1,9 +1,11 @@
-from typing import NamedTuple, TypedDict
+from dataclasses import dataclass
+from typing import NamedTuple
 
 CarDate = NamedTuple("CarDate", [("month", str), ("year", str)])
 
 
-class Car(TypedDict):
+@dataclass
+class Car:
     url: str
     summary: str
     date: CarDate

@@ -2,3 +2,6 @@ returns
 gazpacho
 requests
 twine
+mypy
+types-requests
+types-setuptools
