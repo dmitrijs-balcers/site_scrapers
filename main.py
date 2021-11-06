@@ -1,16 +1,4 @@
-# This is a sample Python script.
+from parsers.mollerAuto import parse_moller_auto
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name: str, version: int) -> None:
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name} {version}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm', 3)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    parse_moller_auto()
