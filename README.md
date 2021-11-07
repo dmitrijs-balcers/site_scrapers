@@ -11,3 +11,7 @@ from scrapers.mollerAuto import parse_moller_auto
 if __name__ == '__main__':
     print(*unwrap_or_failure(parse_moller_auto()), sep="\n")
 ```
+
+### Supported Dealerships
+https://lietotiauto.mollerauto.lv  
+https://lv.brcauto.eu
