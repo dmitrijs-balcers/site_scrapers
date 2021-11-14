@@ -15,3 +15,4 @@ if __name__ == '__main__':
 ### Supported Dealerships
 https://lietotiauto.mollerauto.lv  
 https://lv.brcauto.eu
+https://certified.inchcape.lv/auto
