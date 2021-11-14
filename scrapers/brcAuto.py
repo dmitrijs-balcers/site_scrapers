@@ -1,8 +1,8 @@
-from typing import Iterable, Optional, Dict, Any, Callable
+from typing import Iterable
 
 from gazpacho import Soup
 from returns.pipeline import flow
-from returns.maybe import Maybe, Nothing, Some
+from scrapers.utils import find_one
 from returns.pointfree import bind
 from returns.result import Result, Success, Failure
 
@@ -45,18 +45,3 @@ def parse_brc_auto() -> Result[Iterable[Car], str]:
         )
 
     return Success([parse_car(car) for car in cars])
-
-
-def find_one(tag: str, attrs: Optional[Dict[str, Any]] = None) -> Callable[[Soup], Maybe[Soup]]:
-    def _(soup: Soup) -> Maybe[Soup]:
-        result = soup.find(tag, attrs)
-
-        if type(result) is Soup:
-            return Some(result)
-
-        if type(result) is list:
-            return Some(result[0])
-
-        return Nothing
-
-    return _
