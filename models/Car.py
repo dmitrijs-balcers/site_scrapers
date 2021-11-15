@@ -12,4 +12,4 @@ class Car:
     type: str
     transmission: str
     hp: str
-    price: str
+    price: int

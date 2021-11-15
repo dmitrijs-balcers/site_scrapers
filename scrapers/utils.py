@@ -2,7 +2,7 @@ from typing import Optional, Dict, Any, Callable, List
 
 from gazpacho import Soup
 from returns.maybe import Maybe, Some, Nothing
-
+import re
 
 def find_one(tag: str, attrs: Optional[Dict[str, Any]] = None) -> Callable[[Soup], Maybe[Soup]]:
     def _(soup: Soup) -> Maybe[Soup]:
@@ -32,3 +32,7 @@ def find_many(tag: str, attrs: Optional[Dict[str, Any]] = None) -> Callable[[Sou
         return Nothing
 
     return _
+
+
+def parse_price(price: str) -> int:
+    return int(re.findall(r'\d+', price.replace(" ", ""))[0])
