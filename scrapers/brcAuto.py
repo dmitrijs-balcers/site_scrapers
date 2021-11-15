@@ -2,7 +2,7 @@ from typing import Iterable
 
 from gazpacho import Soup
 from returns.pipeline import flow
-from scrapers.utils import find_one
+from scrapers.utils import find_one, parse_price
 from returns.pointfree import bind
 from returns.result import Result, Success, Failure
 
@@ -41,7 +41,7 @@ def parse_brc_auto() -> Result[Iterable[Car], str]:
             hp=details[4].strip(),
             date=CarDate("00", details[0].strip()),
             type="-",
-            price=price.strip()
+            price=parse_price(price.strip())
         )
 
     return Success([parse_car(car) for car in cars])

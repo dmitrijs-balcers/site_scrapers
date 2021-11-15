@@ -4,13 +4,13 @@ from typing import Iterable
 from gazpacho import Soup
 from returns.pipeline import flow
 from returns.result import Result, Success, Failure
-from scrapers.utils import find_one, find_many
+from scrapers.utils import find_one, find_many, parse_price
 
 from models.Car import Car, CarDate
 
 
 def parse_inchcape() -> Result[Iterable[Car], str]:
-    soup = Soup.get("https://certified.inchcape.lv/auto?drive=AWD");
+    soup = Soup.get("https://certified.inchcape.lv/auto?drive=AWD")
 
     cars = soup.find("div", {"class": "offer js-offer"})
 
@@ -40,7 +40,7 @@ def parse_inchcape() -> Result[Iterable[Car], str]:
         date = details[0].split("-")
         hp = re.findall("[0-9]+\skW|[0-9]+\shp", summary)[0]
 
-        price = flow(
+        price: str = flow(
             car,
             find_one("div", {"class": "offer__price"}),
             lambda op: op.bind(find_one("span", {"class": "new"})),
@@ -50,7 +50,7 @@ def parse_inchcape() -> Result[Iterable[Car], str]:
         return Car(
             summary=summary,
             date=CarDate(date[1], date[0]),
-            price=price,
+            price=parse_price(price),
             hp=hp,
             transmission=details[5],
             type=details[1],

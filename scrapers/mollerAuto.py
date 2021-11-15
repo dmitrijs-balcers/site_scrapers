@@ -8,6 +8,7 @@ from returns.pipeline import is_successful, flow
 from returns.result import Result, Failure, Success
 
 from models.Car import Car, CarDate
+from scrapers.utils import parse_price
 
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
@@ -52,7 +53,7 @@ def parse(car: Soup) -> Result[Car, str]:
     return Success(Car(
         summary=summary.text,
         date=CarDate(date[0], date[1]),
-        price=get_price(data[1]),
+        price=parse_price(data[1].text),
         hp=details[2],
         transmission=details[3],
         type=details[4],
@@ -62,15 +63,6 @@ def parse(car: Soup) -> Result[Car, str]:
 
 def normalize_details(html: Soup) -> Union[List[Soup], Soup, None]:
     return Soup(html.__str__().replace("<br>", ", ")).find("div")
-
-
-def get_price(html: Soup) -> str:
-    price = html.find("span")
-
-    if type(price) is Soup and price:
-        return price.text
-
-    return html.text
 
 
 def get_url(summary: Soup) -> str:
