@@ -9,8 +9,8 @@ from returns.result import Result, Success, Failure
 from models.Car import Car, CarDate
 
 
-def parse_brc_auto() -> Result[Iterable[Car], str]:
-    soup = Soup.get("https://lv.brcauto.eu/lietoti-auto?city=5&search=1&driving_wheelbase=3")
+def parse_brc_auto(page: int = 1) -> Result[Iterable[Car], str]:
+    soup = Soup.get(f"https://lv.brcauto.eu/lietoti-auto?city=5&search=1&driving_wheelbase=3&page={page}")
 
     cars = soup.find("div", {"class": "cars"}, partial=False)
 

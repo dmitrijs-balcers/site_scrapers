@@ -14,10 +14,10 @@ from scrapers.utils import parse_price, find_one, find_many
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
 
-def parse_moller_auto() -> Result[Iterable[Car], str]:
+def parse_moller_auto(page: int = 1) -> Result[Iterable[Car], str]:
     r = requests.post(
         url=f"{DOMAIN}/lv/usedcars/search",
-        data={"ajaxsearch": 1, "search_drivetrain": 10003016},
+        data={"ajaxsearch": 1, "search_drivetrain": 10003016, "page": page},
     )
 
     carsHtml = r.text.encode().decode("unicode-escape").replace("\/", "/")
