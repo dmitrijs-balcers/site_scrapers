@@ -18,6 +18,11 @@ def parse_brc_auto() -> Result[Iterable[Car], str]:
         return Failure("failed to acquire cars")
 
     def parse_car(car: Soup) -> Car:
+        imgSrc = flow(
+            car,
+            find_one("img"),
+            lambda _: _.bind(lambda img: img.attrs["src"])
+        )
         car_top = flow(
             car,
             find_one("h2", {"class": "cars__title"}),
@@ -36,6 +41,7 @@ def parse_brc_auto() -> Result[Iterable[Car], str]:
         price = find_one("div", {"class": "cars-price"})(car).map(lambda _: _.text).value_or("")
         return Car(
             url=url.strip(),
+            previewImgSrc=imgSrc,
             summary=summary.strip(),
             transmission=details[2].strip(),
             hp=details[4].strip(),

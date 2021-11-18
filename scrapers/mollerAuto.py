@@ -1,3 +1,4 @@
+import re
 from typing import Union, List, Iterable
 
 import requests
@@ -8,7 +9,7 @@ from returns.pipeline import is_successful, flow
 from returns.result import Result, Failure, Success
 
 from models.Car import Car, CarDate
-from scrapers.utils import parse_price
+from scrapers.utils import parse_price, find_one, find_many
 
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
@@ -36,11 +37,20 @@ def parse_moller_auto() -> Result[Iterable[Car], str]:
 
 
 def parse(car: Soup) -> Result[Car, str]:
-    summary = car.find("div", {"class": "vehiclesummary"}).find("a")  # type: ignore
-    data = car.find("div", {"class": "vehicledata"})
+    imageSrc = flow(
+        car,
+        find_one("div", {"class": "image"}),
+        lambda _: _.bind(lambda i: find_one("a")(i)),
+        lambda _: _.bind(lambda a: a.attrs["style"]),
+        lambda style: re.findall("\/lv.*jpg", style)[0]
+    )
+    summary = flow(
+        find_one("div", {"class": "vehiclesummary"})(car),
+        lambda _: _.bind(lambda c: find_one("a")(c)),
+        lambda _: _.bind(lambda c: c)
+    )
 
-    if (type(data) is not list) or (type(summary) is not Soup):
-        return Failure("failed to parse vehicle data")
+    data: List[Soup] = (find_many("div", {"class": "vehicledata"})(car)).value_or([])
 
     normalized_details = normalize_details(data[0])
 
@@ -58,6 +68,7 @@ def parse(car: Soup) -> Result[Car, str]:
         transmission=details[3],
         type=details[4],
         url=f"{DOMAIN}{get_url(summary)}",
+        previewImgSrc=f"{DOMAIN}{imageSrc}"
     ))
 
 

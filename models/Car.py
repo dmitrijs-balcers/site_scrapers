@@ -7,6 +7,7 @@ CarDate = NamedTuple("CarDate", [("month", str), ("year", str)])
 @dataclass
 class Car:
     url: str
+    previewImgSrc: str
     summary: str
     date: CarDate
     type: str

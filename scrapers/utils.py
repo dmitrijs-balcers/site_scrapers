@@ -4,6 +4,7 @@ from gazpacho import Soup
 from returns.maybe import Maybe, Some, Nothing
 import re
 
+
 def find_one(tag: str, attrs: Optional[Dict[str, Any]] = None) -> Callable[[Soup], Maybe[Soup]]:
     def _(soup: Soup) -> Maybe[Soup]:
         result = soup.find(tag, attrs)

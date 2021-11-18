@@ -25,6 +25,13 @@ def parse_inchcape() -> Result[Iterable[Car], str]:
             lambda _: _.bind(lambda attrs: attrs["href"]),
         )
 
+        imageSrc = flow(
+            car,
+            find_one("div", {"class": "offer__image-wrap js-offer-image active"}),
+            lambda _: _.bind(find_one("img")),
+            lambda _: _.bind(lambda i: i.attrs["src"]),
+        )
+
         summary: str = flow(
             car,
             find_one("a", {"class": "offer__title"}),
@@ -54,6 +61,7 @@ def parse_inchcape() -> Result[Iterable[Car], str]:
             hp=hp,
             transmission=details[5],
             type=details[1],
+            previewImgSrc="https://certified.inchcape.lv" + imageSrc,
             url="https://certified.inchcape.lv" + url,
         )
 
