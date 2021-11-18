@@ -21,7 +21,7 @@ def parse_brc_auto() -> Result[Iterable[Car], str]:
         imgSrc = flow(
             car,
             find_one("img"),
-            lambda _: _.bind(lambda img: img.attrs["src"])
+            lambda _: _.bind(lambda img: img.attrs["data-src"])
         )
         car_top = flow(
             car,

@@ -42,12 +42,14 @@ def parse(car: Soup) -> Result[Car, str]:
         find_one("div", {"class": "image"}),
         lambda _: _.bind(lambda i: find_one("a")(i)),
         lambda _: _.bind(lambda a: a.attrs["style"]),
-        lambda style: re.findall("\/lv.*jpg", style)[0]
+        lambda style: re.findall("\/lv.*jpg", style)[0],
+        lambda imgSrc: re.sub("\/h=\d.*\/", "/w=374/", imgSrc)
     )
     summary = flow(
         find_one("div", {"class": "vehiclesummary"})(car),
         lambda _: _.bind(lambda c: find_one("a")(c)),
-        lambda _: _.bind(lambda c: c)
+        lambda _: _.bind(lambda c: c),
+
     )
 
     data: List[Soup] = (find_many("div", {"class": "vehicledata"})(car)).value_or([])

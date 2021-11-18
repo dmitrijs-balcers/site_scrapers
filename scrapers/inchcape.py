@@ -30,6 +30,7 @@ def parse_inchcape() -> Result[Iterable[Car], str]:
             find_one("div", {"class": "offer__image-wrap js-offer-image active"}),
             lambda _: _.bind(find_one("img")),
             lambda _: _.bind(lambda i: i.attrs["src"]),
+            lambda src: src.replace("64x48", "640x480")
         )
 
         summary: str = flow(
