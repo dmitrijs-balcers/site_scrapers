@@ -1,7 +1,9 @@
 import time
+from itertools import chain
 from typing import List, Iterable
 
-from returns.result import Result
+from returns.iterables import Fold
+from returns.result import Result, Success
 
 from models.Car import Car
 from scrapers.brcAuto import parse_brc_auto
@@ -25,5 +27,6 @@ if __name__ == "__main__":
     pool.close()
     pool.join()
 
-    print(*results, sep="\n")
+    res: Iterable[Car] = chain(*Fold.collect(results, Success.from_value(())).value_or(()))
+    print(*res, sep="\n")
     print("--- %s seconds ---" % (time.time() - start_time))
