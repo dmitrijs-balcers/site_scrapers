@@ -15,6 +15,7 @@ DOMAIN = "https://lietotiauto.mollerauto.lv"
 
 
 def parse_moller_auto(page: int = 1) -> Result[Iterable[Car], str]:
+    print("parse_moller_auto")
     r = requests.post(
         url=f"{DOMAIN}/lv/usedcars/search",
         data={"ajaxsearch": 1, "search_drivetrain": 10003016, "page": page},
@@ -48,7 +49,7 @@ def parse(car: Soup) -> Result[Car, str]:
     summary = flow(
         find_one("div", {"class": "vehiclesummary"})(car),
         lambda _: _.bind(lambda c: find_one("a")(c)),
-        lambda _: _.bind(lambda c: c),
+        lambda _: _.unwrap(),
 
     )
 

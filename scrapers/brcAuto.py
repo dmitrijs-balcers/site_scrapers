@@ -10,6 +10,7 @@ from models.Car import Car, CarDate
 
 
 def parse_brc_auto(page: int = 1) -> Result[Iterable[Car], str]:
+    print("parse_brc_auto")
     soup = Soup.get(f"https://lv.brcauto.eu/lietoti-auto?city=5&search=1&driving_wheelbase=3&page={page}")
 
     cars = soup.find("div", {"class": "cars"}, partial=False)
