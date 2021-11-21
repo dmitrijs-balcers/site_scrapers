@@ -5,3 +5,4 @@ twine
 mypy
 types-requests
 types-setuptools
+httpx
