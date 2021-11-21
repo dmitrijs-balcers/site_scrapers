@@ -1,7 +1,7 @@
 import asyncio
 import time
-from itertools import chain
-from typing import List, Iterable, Sequence
+from itertools import chain, islice, takewhile, repeat
+from typing import List, Iterable, Sequence, TypeVar, Tuple
 
 import httpx
 from returns.future import future_safe, FutureResultE
@@ -18,18 +18,36 @@ import multiprocessing as mp
 
 @future_safe
 async def fetch_car_html(url: str) -> str:
-    async with httpx.AsyncClient(timeout=5) as client:
+    async with httpx.AsyncClient(timeout=15) as client:
         response = await client.get(url)
         response.raise_for_status()
         return response.text
 
 
-async def fetch_cars(car: Iterable[Car]) -> Sequence[FutureResultE[str]]:
-    futures: Sequence[FutureResultE[str]] = await asyncio.gather(
-        *[fetch_car_html(car.url) for car in car]
+T = TypeVar('T')
+
+
+def split_every(n: int, iterable: Iterable[T]) -> Iterable[Iterable[T]]:
+    iterator = iter(iterable)
+    return takewhile(bool, (list(islice(iterator, n)) for _ in repeat(None)))
+
+
+async def fetch_cars(urls: Iterable[str]) -> List[FutureResultE[str]]:
+    futures: List[FutureResultE[str]] = await asyncio.gather(
+        *[fetch_car_html(u) for u in urls]
     )
 
     return futures
+
+
+async def aaa(res: Iterable[Car]) -> List[FutureResultE[str]]:
+    url_batches = split_every(10, [car.url for car in res])
+    car_details: List[FutureResultE[str]] = []
+    for url_batch in url_batches:
+        car_details = car_details + await fetch_cars(url_batch)
+
+    return car_details
+
 
 if __name__ == "__main__":
     start_time = time.time()
@@ -48,7 +66,8 @@ if __name__ == "__main__":
 
     res: Iterable[Car] = chain(*Fold.collect(results, Success.from_value(())).value_or(()))
 
-    car_details = asyncio.run(fetch_cars(res))
+
+    car_details = asyncio.run(aaa(res))
     print(car_details)
 
     print(*res, sep="\n")
