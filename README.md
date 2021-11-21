@@ -6,13 +6,13 @@
 
 ```python
 from returns.methods import unwrap_or_failure
-from scrapers.mollerAuto import parse_moller_auto
+from scrapers.mollerAuto import fetch_moller_auto_list
 
 if __name__ == '__main__':
-    print(*unwrap_or_failure(parse_moller_auto()), sep="\n")
+    print(*unwrap_or_failure(fetch_moller_auto_list()), sep="\n")
 ```
 
 ### Supported Dealerships
 https://lietotiauto.mollerauto.lv  
-https://lv.brcauto.eu
+https://lv.brcauto.eu  
 https://certified.inchcape.lv/auto

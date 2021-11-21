@@ -9,7 +9,7 @@ from scrapers.utils import find_one, find_many, parse_price
 from models.Car import Car, CarDate
 
 
-def parse_inchcape(page: int = 1) -> Result[Iterable[Car], str]:
+def fetch_inchcape_list(page: int = 1) -> Result[Iterable[Car], str]:
     print("parse_inchcape")
     soup = Soup.get(
         url=f"https://certified.inchcape.lv/auto-ajax?drive=AWD&catalog_page={page}&_=1637248077760",

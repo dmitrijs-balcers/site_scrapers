@@ -9,7 +9,7 @@ from returns.result import Result, Success, Failure
 from models.Car import Car, CarDate
 
 
-def parse_brc_auto(page: int = 1) -> Result[Iterable[Car], str]:
+def fetch_brc_auto_list(page: int = 1) -> Result[Iterable[Car], str]:
     print("parse_brc_auto")
     soup = Soup.get(f"https://lv.brcauto.eu/lietoti-auto?city=5&search=1&driving_wheelbase=3&page={page}")
 

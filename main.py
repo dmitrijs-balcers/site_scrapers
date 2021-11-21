@@ -6,9 +6,9 @@ from returns.iterables import Fold
 from returns.result import Result, Success
 
 from models.Car import Car
-from scrapers.brcAuto import parse_brc_auto
-from scrapers.mollerAuto import parse_moller_auto
-from scrapers.inchcape import parse_inchcape
+from scrapers.brcAuto import fetch_brc_auto_list
+from scrapers.mollerAuto import fetch_moller_auto_list
+from scrapers.inchcape import fetch_inchcape_list
 
 import multiprocessing as mp
 
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     [
         pool.apply_async(fn, callback=lambda r: results.append(r))
-        for fn in [parse_moller_auto, parse_inchcape, parse_brc_auto]
+        for fn in [fetch_moller_auto_list, fetch_inchcape_list, fetch_brc_auto_list]
     ]
 
     pool.close()
