@@ -1,7 +1,7 @@
 import asyncio
 import time
 from itertools import chain, islice, takewhile, repeat
-from typing import List, Iterable, Sequence, TypeVar, Tuple, Callable
+from typing import List, Iterable, Sequence, TypeVar, Tuple, Callable, Coroutine, Awaitable
 
 import httpx
 from returns.future import future_safe, FutureResultE
@@ -28,6 +28,8 @@ async def fetch_car_html(url: str) -> str:
 
 
 T = TypeVar('T')
+_FirstType = TypeVar('_FirstType')
+_SecondType = TypeVar('_SecondType')
 
 
 def split_every(n: int, iterable: Iterable[T]) -> Iterable[Iterable[T]]:
@@ -52,16 +54,15 @@ async def fetch_cars_in_batches(res: Iterable[Car]) -> List[FutureResultE[str]]:
     return car_details
 
 
-async def fetch_car_pages(fn: Callable[[], Result[Iterable[Car], str]]) -> List[FutureResultE[str]]:
-    list: Result[Iterable[Car], str] = await sync_to_async(fn)()
-    return await fetch_cars_in_batches(list.value_or([]))
+async def fetch_car_pages(get_cars: Callable[..., Awaitable[Result[Iterable[Car], str]]]) -> List[FutureResultE[str]]:
+    return await fetch_cars_in_batches((await get_cars()).value_or([]))
 
 
 async def gather_lists() -> Sequence[IOResultE[List[FutureResultE[str]]]]:
     return await asyncio.gather(*[
-        fetch_car_pages(fetch_moller_auto_list),
-        fetch_car_pages(fetch_inchcape_list),
-        fetch_car_pages(fetch_brc_auto_list),
+        fetch_car_pages(sync_to_async(fetch_moller_auto_list)),
+        fetch_car_pages(sync_to_async(fetch_inchcape_list)),
+        fetch_car_pages(sync_to_async(fetch_brc_auto_list)),
     ])
 
 
