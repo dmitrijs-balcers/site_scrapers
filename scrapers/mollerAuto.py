@@ -14,7 +14,7 @@ from scrapers.utils import parse_price, find_one, find_many
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
 
-def fetch_moller_auto_list(page: int = 1) -> Result[Iterable[Car], str]:
+def fetch_moller_auto_list(page: int = 1) -> Iterable[Car]:
     print("parse_moller_auto")
     r = requests.post(
         url=f"{DOMAIN}/lv/usedcars/search",
@@ -28,13 +28,13 @@ def fetch_moller_auto_list(page: int = 1) -> Result[Iterable[Car], str]:
     cars = soup.find("div", {"class": "vehicle"})
 
     if type(cars) is not list:
-        return Failure("issue parsing vehicles")
+        raise Exception("issue parsing vehicles")
 
-    return Success(flow(
+    return flow(
         [parse(car) for car in cars],
         lambda _: filter(is_successful, _),
         lambda _: [unwrap_or_failure(car) for car in _],
-    ))
+    )
 
 
 def parse(car: Soup) -> Result[Car, str]:

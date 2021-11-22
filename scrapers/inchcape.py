@@ -9,7 +9,7 @@ from scrapers.utils import find_one, find_many, parse_price
 from models.Car import Car, CarDate
 
 
-def fetch_inchcape_list(page: int = 1) -> Result[Iterable[Car], str]:
+def fetch_inchcape_list(page: int = 1) -> Iterable[Car]:
     print("parse_inchcape")
     soup = Soup.get(
         url=f"https://certified.inchcape.lv/auto-ajax?drive=AWD&catalog_page={page}&_=1637248077760",
@@ -18,7 +18,7 @@ def fetch_inchcape_list(page: int = 1) -> Result[Iterable[Car], str]:
     cars = soup.find("div", {"class": "offer js-offer"})
 
     if type(cars) is not list:
-        return Failure("failed to acquire cars")
+        raise Exception("failed to acquire cars")
 
     def parse_car(car: Soup) -> Car:
         url = flow(
@@ -69,4 +69,4 @@ def fetch_inchcape_list(page: int = 1) -> Result[Iterable[Car], str]:
             url="https://certified.inchcape.lv" + url,
         )
 
-    return Success([parse_car(car) for car in cars])
+    return [parse_car(car) for car in cars]

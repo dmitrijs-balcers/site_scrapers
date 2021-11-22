@@ -9,14 +9,14 @@ from returns.result import Result, Success, Failure
 from models.Car import Car, CarDate
 
 
-def fetch_brc_auto_list(page: int = 1) -> Result[Iterable[Car], str]:
+def fetch_brc_auto_list(page: int = 1) -> Iterable[Car]:
     print("parse_brc_auto")
     soup = Soup.get(f"https://lv.brcauto.eu/lietoti-auto?city=5&search=1&driving_wheelbase=3&page={page}")
 
     cars = soup.find("div", {"class": "cars"}, partial=False)
 
     if type(cars) is not list:
-        return Failure("failed to acquire cars")
+        raise Exception("failed to acquire cars")
 
     def parse_car(car: Soup) -> Car:
         imgSrc = flow(
@@ -51,4 +51,4 @@ def fetch_brc_auto_list(page: int = 1) -> Result[Iterable[Car], str]:
             price=parse_price(price.strip())
         )
 
-    return Success([parse_car(car) for car in cars])
+    return [parse_car(car) for car in cars]
