@@ -1,22 +1,20 @@
 import asyncio
 import time
-from itertools import islice, takewhile, repeat
+from itertools import islice, takewhile, repeat, chain
 from typing import List, Iterable, Sequence, TypeVar, Tuple, Callable, Coroutine, Awaitable
 
 import httpx
 from returns._internal.pipeline.flow import flow
 from returns.converters import flatten
 from returns.future import future_safe, FutureResultE
-from returns.io import IOResultE, IO
+from returns.io import IOResultE
 from returns.iterables import Fold
-from returns.pointfree import bind, map_
+from returns.pointfree import map_
 
 from models.Car import Car
 from scrapers.brcAuto import fetch_brc_auto_list
 from scrapers.mollerAuto import fetch_moller_auto_list
 from scrapers.inchcape import fetch_inchcape_list
-
-import multiprocessing as mp
 
 from utils.sync_to_async import sync_to_async
 
@@ -29,7 +27,7 @@ async def fetch_car_html(url: str) -> str:
         return response.text
 
 
-CarHtmlFutures = Tuple[FutureResultE[str], ...]
+CarHtmlFutures = Iterable[FutureResultE[str]]
 T = TypeVar('T')
 _FirstType = TypeVar('_FirstType')
 _SecondType = TypeVar('_SecondType')
@@ -42,13 +40,13 @@ def split_every(n: int, iterable: Iterable[T]) -> Iterable[Iterable[T]]:
 
 @future_safe
 async def fetch_car_htmls(urls: Iterable[str]) -> CarHtmlFutures:
-    return tuple(await asyncio.gather(
+    return iter(await asyncio.gather(
         *[fetch_car_html(u) for u in urls]
     ))
 
 
-def flatten_tuples(v: Tuple[Tuple[T, ...], ...]) -> Tuple[T, ...]:
-    return tuple(sum(v, ()))
+def flatten_iter(v: Iterable[Iterable[T]]) -> Iterable[T]:
+    return chain(*v)
 
 
 def fetch_cars_in_batches(res: Iterable[Car]) -> FutureResultE[CarHtmlFutures]:
@@ -62,14 +60,13 @@ def fetch_cars_in_batches(res: Iterable[Car]) -> FutureResultE[CarHtmlFutures]:
 
     future_of_car_details_futures: FutureResultE[CarHtmlFutures] = flow(
         future_of_batched_car_details_futures,
-        map_(flatten_tuples)
+        map_(flatten_iter)
     )
 
     return future_of_car_details_futures
 
 
-def fetch_car_pages(get_cars: Callable[..., FutureResultE[Iterable[Car]]]) -> FutureResultE[
-    Tuple[FutureResultE[str], ...]]:
+def fetch_car_pages(get_cars: Callable[..., FutureResultE[Iterable[Car]]]) -> FutureResultE[CarHtmlFutures]:
     future_cars: FutureResultE[Iterable[Car]] = get_cars()
 
     return flow(
