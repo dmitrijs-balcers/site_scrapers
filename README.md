@@ -6,7 +6,7 @@
 
 ```python
 from returns.methods import unwrap_or_failure
-from scrapers.mollerAuto import fetch_moller_auto_list
+from scrapers.list.mollerAuto import fetch_moller_auto_list
 
 if __name__ == '__main__':
     print(*unwrap_or_failure(fetch_moller_auto_list()), sep="\n")

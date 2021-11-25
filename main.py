@@ -1,10 +1,10 @@
 import asyncio
 import time
 from itertools import islice, takewhile, repeat, chain
-from typing import List, Iterable, Sequence, TypeVar, Tuple, Callable, Coroutine, Awaitable
+from typing import List, Iterable, Sequence, TypeVar, Callable
 
 import httpx
-from returns._internal.pipeline.flow import flow
+from returns.pipeline import flow
 from returns.converters import flatten
 from returns.future import future_safe, FutureResultE
 from returns.io import IOResultE
@@ -12,9 +12,9 @@ from returns.iterables import Fold
 from returns.pointfree import map_
 
 from models.Car import Car
-from scrapers.brcAuto import fetch_brc_auto_list
-from scrapers.mollerAuto import fetch_moller_auto_list
-from scrapers.inchcape import fetch_inchcape_list
+from scrapers.list.brcAuto import fetch_brc_auto_list
+from scrapers.list.mollerAuto import fetch_moller_auto_list
+from scrapers.list.inchcape import fetch_inchcape_list
 
 from utils.sync_to_async import sync_to_async
 
@@ -89,4 +89,8 @@ if __name__ == "__main__":
     results: Sequence[IOResultE[List[FutureResultE[str]]]] = asyncio.run(gather_lists())
 
     print(*results, sep="\n")
+
+    # result = asyncio.run(fetch_car_html("https://lietotiauto.mollerauto.lv/lv/vehicle/10236564/audi-a4-20-tfsi-110kw-aut-20-110kw-aut/").awaitable())
+    # print(result)
+
     print("--- %s seconds ---" % (time.time() - start_time))
