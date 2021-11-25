@@ -9,9 +9,10 @@ from returns.converters import flatten
 from returns.future import future_safe, FutureResultE
 from returns.io import IOResultE
 from returns.iterables import Fold
-from returns.pointfree import map_
+from returns.pointfree import map_, bind
 
 from models.Car import Car
+from scrapers.details.mollerAuto import scrape_car_detail
 from scrapers.list.brcAuto import fetch_brc_auto_list
 from scrapers.list.mollerAuto import fetch_moller_auto_list
 from scrapers.list.inchcape import fetch_inchcape_list
@@ -86,11 +87,11 @@ async def gather_lists() -> Sequence[IOResultE[List[FutureResultE[str]]]]:
 if __name__ == "__main__":
     start_time = time.time()
     # Sequence of lists with html strings
-    results: Sequence[IOResultE[List[FutureResultE[str]]]] = asyncio.run(gather_lists())
+    # results: Sequence[IOResultE[List[FutureResultE[str]]]] = asyncio.run(gather_lists())
 
-    print(*results, sep="\n")
+    # print(*results, sep="\n")
 
-    # result = asyncio.run(fetch_car_html("https://lietotiauto.mollerauto.lv/lv/vehicle/10236564/audi-a4-20-tfsi-110kw-aut-20-110kw-aut/").awaitable())
-    # print(result)
+    result = asyncio.run(fetch_car_html("https://lietotiauto.mollerauto.lv/lv/vehicle/10236087/audi-a6-sport-20-150kw-aut/").awaitable())
+    print(flow(result, bind(scrape_car_detail)))
 
     print("--- %s seconds ---" % (time.time() - start_time))
