@@ -93,7 +93,7 @@ def fetch_car_pages(
     )
 
 
-async def gather_lists() -> Sequence[IOResultE[List[FutureResultE[str]]]]:
+async def gather_lists() -> Sequence[IOResultE[CarFullFutures]]:
     car_futures = [
         fetch_car_pages(sync_to_async(fn[0]), fn[1])
         for fn in [
@@ -103,28 +103,16 @@ async def gather_lists() -> Sequence[IOResultE[List[FutureResultE[str]]]]:
         ]
     ]
 
-    rs = await asyncio.gather(*car_futures)
-
-    return rs
-
+    return await asyncio.gather(*car_futures)
 
 if __name__ == "__main__":
     start_time = time.time()
-    # Sequence of lists with html strings
-    results: Sequence[IOResultE[List[FutureResultE[str]]]] = asyncio.run(gather_lists())
+    results: Sequence[IOResultE[CarFullFutures]] = asyncio.run(gather_lists())
 
-    # r2 = [flow(
-    #     result,
-    #     lambda _: _.bind(lambda _: _),
-    #     lambda _: [flow(res, lambda _: _.bind(lambda _: _)) for res in _],
-    #     lambda _: [scrape_brc_auto_car_detail(el) for el in _]
-    # ) for result in results]
-
-    # [print(*rr, sep="\n") for rr in r2]
-    # print(*r2, sep="\n")
-    print(*results, sep="\n")
-
-    # result = asyncio.run(fetch_car_html("https://lv.brcauto.eu/automobilis/c832466-bmw-220-2.0l-mehaniska").awaitable())
-    # print(flow(result, bind(scrape_brc_auto_car_detail)))
+    r2 = [flow(
+        result,
+        lambda _: _.bind(lambda _: _),
+        lambda _: print(*_, sep="\n")
+    ) for result in results]
 
     print("--- %s seconds ---" % (time.time() - start_time))
