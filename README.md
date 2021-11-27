@@ -2,17 +2,22 @@
 
 `pip install site-scrapers`
 
+### What this does?
+Will fetch car details from dealership (concurrently)
+
 ### Usage:
 
 ```python
-from returns.methods import unwrap_or_failure
-from scrapers.mollerAuto import parse_moller_auto
+import asyncio
+
+from scrapers.scraper import scrape_all
 
 if __name__ == '__main__':
-    print(*unwrap_or_failure(parse_moller_auto()), sep="\n")
+    results = asyncio.run(scrape_all())
+    print(*results, sep="\n") # will output fetched car details
 ```
 
 ### Supported Dealerships
 https://lietotiauto.mollerauto.lv  
-https://lv.brcauto.eu
+https://lv.brcauto.eu  
 https://certified.inchcape.lv/auto
