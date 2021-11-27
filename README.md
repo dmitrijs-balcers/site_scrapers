@@ -2,6 +2,9 @@
 
 `pip install site-scrapers`
 
+### What this does?
+Will fetch car details from dealership (concurrently)
+
 ### Usage:
 
 ```python
@@ -11,7 +14,7 @@ from scrapers.scraper import scrape_all
 
 if __name__ == '__main__':
     results = asyncio.run(scrape_all())
-    print(*results, sep="\n")
+    print(*results, sep="\n") # will output fetched car details
 ```
 
 ### Supported Dealerships
