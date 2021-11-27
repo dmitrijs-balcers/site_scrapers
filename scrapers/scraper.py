@@ -22,6 +22,8 @@ from scrapers.list.inchcape import fetch_inchcape_list
 
 from utils.sync_to_async import sync_to_async
 
+ListScraper = Callable[[int], Iterable[Car]]
+CarScraper = Callable[[str], CarFull]
 CarHtmlFutures = Iterable[FutureResultE[str]]
 CarFullFutures = Iterable[FutureResultE[CarFull]]
 T = TypeVar('T')
@@ -30,21 +32,23 @@ _SecondType = TypeVar('_SecondType')
 
 
 async def scrape_all() -> Iterable[CarFull]:
+    return await scrape_specific([
+        (fetch_moller_auto_list, scrape_moller_car_detail),
+        (fetch_inchcape_list, scrape_inchcape_car_detail),
+        (fetch_brc_auto_list, scrape_brc_auto_car_detail),
+    ])
+
+
+async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) -> Iterable[CarFull]:
     car_futures: Sequence[FutureResultE[CarFullFutures]] = [
         fetch_car_pages(sync_to_async(list_scraper), car_scraper)
-        for (list_scraper, car_scraper) in [
-            (fetch_moller_auto_list, scrape_moller_car_detail),
-            (fetch_inchcape_list, scrape_inchcape_car_detail),
-            (fetch_brc_auto_list, scrape_brc_auto_car_detail),
-        ]
+        for (list_scraper, car_scraper) in scrapers
     ]
 
-    v: FutureResultE[Tuple[CarFullFutures, ...]] = Fold.collect(car_futures, FutureResultE.from_value(()))
-
-    cars: IOResultE[Tuple[CarFullFutures, ...]] = await v.awaitable()
+    cars: Sequence[IOResultE[Tuple[CarFullFutures, ...]]] = await asyncio.gather(*car_futures)
 
     return flow(
-        cars,
+        Fold.collect(cars, IOResultE.from_value(())),
         lambda _: _.bind(lambda _: _),
         lambda _: flatten_iter(_),
     )
