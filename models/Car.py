@@ -2,11 +2,11 @@ from dataclasses import dataclass
 from typing import NamedTuple, Literal, Optional
 
 CarDate = NamedTuple("CarDate", [("month", str), ("year", str)])
-Drivetrain = Optional[Literal["front", "awd", "back"]]
-BodyType = Literal["sedan", "hatchback", "wagon", "pickup", "suv"]
-FuelType = Literal["petrol", "diesel"]
+Drivetrain = Literal["fwd", "awd", "rwd"]
+BodyType = Literal["sedan", "hatchback", "wagon", "pickup", "suv", "minivan", "motorcycle"]
+FuelType = Literal["petrol", "diesel", "hybrid"]
 Country = Literal["lv", "lt", "ee"]
-Dealer = Literal["moller"]
+Dealer = Literal["moller", "inchcape"]
 
 
 
@@ -16,27 +16,27 @@ class Car:
     previewImgSrc: str
     summary: str
     # first registration date
-    date: CarDate
-    type: str
+    date: Optional[CarDate]
+    type: Optional[str]
     # TODO: put literal here with automatic/manual
-    transmission: str
+    transmission: Optional[str]
     # TODO: put int here
-    hp: str
+    hp: Optional[str]
     price: int
 
 
 @dataclass
 class CarFull(Car):
-    vin: str
-    registrationNo: str
-    mileage: int
-    engineSize: int
-    techInspDate: CarDate
+    vin: Optional[str]
+    registrationNo: Optional[str]
+    mileage: Optional[int]
+    engineSize: Optional[int]
+    techInspDate: Optional[CarDate]
     fuelType: Optional[FuelType]
     body: Optional[BodyType]
-    drivetrain: Drivetrain
-    color: str
+    drivetrain: Optional[Drivetrain]
+    color: Optional[str]
     hasWarranty: Optional[bool]
-    doors: str
+    doors: Optional[str]
     country: Optional[Country]
     dealer: Dealer

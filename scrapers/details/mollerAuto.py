@@ -5,13 +5,13 @@ from gazpacho import Soup
 from returns.pipeline import flow
 from returns.pointfree import bind
 
-from models.Car import CarDate, CarFull, Country, FuelType, BodyType
+from models.Car import CarDate, CarFull, Country, FuelType, BodyType, Drivetrain
 from scrapers.utils import parse_price, find_one, find_many
 
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
 
-def scrape_car_detail(html: str) -> CarFull:
+def scrape_moller_car_detail(html: str) -> CarFull:
     soup = Soup(html)
 
     def get_row_tuple(row: Soup) -> Tuple[str, str]:
@@ -43,46 +43,54 @@ def scrape_car_detail(html: str) -> CarFull:
     return CarFull(
         url=url,
         summary=find_one("h1")(soup).map(lambda _: _.text).value_or(""),
-        transmission=details['Pārnesumkārba:'],
-        hp=details['Jauda:'],
-        type=details['Virsbūves tips:'],
-        body=parse_body(details['Virsbūves tips:']),
-        date=parse_date(details['Pirmā reģistrācija:']),
-        color=details['Krāsa:'],
-        engineSize=parse_int(details['Dzinēja tilpums:']),
-        mileage=parse_int(details['Nobraukums:']),
-        fuelType=parse_fuel_type(details['Degviela:']),
-        hasWarranty=parse_warranty(details['Garantija:']),
-        doors=details['Durvju skaits:'],
-        vin=details['Virsbūves (VIN) numurs:'],
-        registrationNo=details['Reģistrācijas numurs:'],
-        techInspDate=parse_date(details['Tehniskā skate:']),
-        drivetrain=None,
+        transmission=details.get('Pārnesumkārba:'),
+        hp=details.get('Jauda:'),
+        type=details.get('Virsbūves tips:'),
+        body=parse_body(details.get('Virsbūves tips:')),
+        date=parse_date(details.get('Pirmā reģistrācija:')),
+        color=details.get('Krāsa:'),
+        engineSize=parse_int(details.get('Dzinēja tilpums:')),
+        mileage=parse_int(details.get('Nobraukums:')),
+        fuelType=parse_fuel_type(details.get('Degviela:')),
+        hasWarranty=parse_warranty(details.get('Garantija:')),
+        doors=details.get('Durvju skaits:'),
+        vin=details.get('Virsbūves (VIN) numurs:'),
+        registrationNo=details.get('Reģistrācijas numurs:'),
+        techInspDate=parse_date(details.get('Tehniskā skate:')),
+        drivetrain=parse_drivetrain(details.get('Piedziņa:')),
         price=parse_price(info['Cena:']),
         dealer="moller",
-        country=parse_country(info['Valsts:']),
+        country=parse_country(info.get('Valsts:')),
         previewImgSrc="https://lietotiauto.mollerauto.lv" + imageSrc
     )
 
 
-def parse_country(country: str) -> Optional[Country]:
+def parse_country(country: Optional[str]) -> Optional[Country]:
     if country == "Latvija":
         return "lv"
     if country == "Lietuva":
         return "lt"
+    if country == "Igaunija":
+        return "ee"
     return None
 
 
-def parse_date(date: str) -> CarDate:
+def parse_date(date: Optional[str]) -> Optional[CarDate]:
+    if date is None:
+        return None
+
     d = date.split("/")
     return CarDate(d[0], d[1])
 
 
-def parse_int(mileage: str) -> int:
+def parse_int(mileage: Optional[str]) -> Optional[int]:
+    if mileage is None:
+        return None
+
     return int(re.findall(r'\d+', mileage.replace(" ", ""))[0])
 
 
-def parse_fuel_type(fuelType: str) -> Optional[FuelType]:
+def parse_fuel_type(fuelType: Optional[str]) -> Optional[FuelType]:
     if fuelType == "benzīns":
         return "petrol"
     if fuelType == "dīzelis":
@@ -90,15 +98,27 @@ def parse_fuel_type(fuelType: str) -> Optional[FuelType]:
     return None
 
 
-def parse_body(body: str) -> Optional[BodyType]:
+def parse_body(body: Optional[str]) -> Optional[BodyType]:
     if body == "sedans":
         return "sedan"
     if body == "universāls":
         return "wagon"
+    if body == "pikaps":
+        return "pickup"
     return None
 
 
-def parse_warranty(warranty: str) -> Optional[bool]:
+def parse_warranty(warranty: Optional[str]) -> Optional[bool]:
     if warranty == "Ražotāja garantija":
         return True
+    return None
+
+
+def parse_drivetrain(drivetrain: Optional[str]) -> Optional[Drivetrain]:
+    if drivetrain == "pilnpiedziņa":
+        return "awd"
+    if drivetrain == "priekšējā piedziņa":
+        return "fwd"
+    if drivetrain == "aizmugures piedziņa":
+        return "rwd"
     return None
