@@ -4,7 +4,7 @@ from gazpacho import Soup
 from returns.pipeline import flow
 from scrapers.utils import find_one, find_many, parse_price
 
-from models.Car import Car, CarDate, CarFull, Drivetrain, BodyType, FuelType
+from models.Car import CarDate, CarFull, Drivetrain, BodyType, FuelType
 
 
 def scrape_brc_auto_car_detail(html: str) -> CarFull:

@@ -9,9 +9,8 @@ Country = Literal["lv", "lt", "ee"]
 Dealer = Literal["moller", "inchcape", "brc"]
 
 
-
 @dataclass
-class Car:
+class CarFull():
     url: str
     previewImgSrc: str
     summary: str
@@ -23,10 +22,6 @@ class Car:
     # TODO: put int here
     hp: Optional[str]
     price: int
-
-
-@dataclass
-class CarFull(Car):
     vin: Optional[str]
     registrationNo: Optional[str]
     mileage: Optional[int]

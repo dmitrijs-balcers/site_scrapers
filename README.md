@@ -5,11 +5,13 @@
 ### Usage:
 
 ```python
-from returns.methods import unwrap_or_failure
-from scrapers.list.mollerAuto import fetch_moller_auto_list
+import asyncio
+
+from scrapers.scraper import scrape_all
 
 if __name__ == '__main__':
-    print(*unwrap_or_failure(fetch_moller_auto_list()), sep="\n")
+    results = asyncio.run(scrape_all())
+    print(*results, sep="\n")
 ```
 
 ### Supported Dealerships

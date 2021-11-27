@@ -3,7 +3,6 @@ from typing import Tuple, Dict, Optional
 
 from gazpacho import Soup
 from returns.pipeline import flow
-from returns.pointfree import bind
 
 from models.Car import CarDate, CarFull, Country, FuelType, BodyType, Drivetrain
 from scrapers.utils import parse_price, find_one, find_many

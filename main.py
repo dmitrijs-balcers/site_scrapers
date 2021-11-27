@@ -1,5 +1,6 @@
 import asyncio
 import time
+
 from scrapers.scraper import scrape_all
 
 

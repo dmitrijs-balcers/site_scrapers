@@ -10,19 +10,19 @@ from returns.converters import flatten
 from returns.future import future_safe, FutureResultE
 from returns.io import IOResultE
 from returns.iterables import Fold
-from returns.pointfree import map_, bind
+from returns.pointfree import map_
 
-from models.Car import Car, CarFull
+from models.Car import CarFull
 from scrapers.details.brcAuto import scrape_brc_auto_car_detail
 from scrapers.details.inchcape import scrape_inchcape_car_detail
 from scrapers.details.mollerAuto import scrape_moller_car_detail
-from scrapers.list.brcAuto import fetch_brc_auto_list
-from scrapers.list.mollerAuto import fetch_moller_auto_list
-from scrapers.list.inchcape import fetch_inchcape_list
+from scrapers.list.brcAuto import fetch_brc_auto_urls
+from scrapers.list.mollerAuto import fetch_moller_urls
+from scrapers.list.inchcape import fetch_inchcape_urls
 
 from utils.sync_to_async import sync_to_async
 
-ListScraper = Callable[[int], Iterable[Car]]
+ListScraper = Callable[[int], Iterable[str]]
 CarScraper = Callable[[str], CarFull]
 CarHtmlFutures = Iterable[FutureResultE[str]]
 CarFullFutures = Iterable[FutureResultE[CarFull]]
@@ -33,9 +33,9 @@ _SecondType = TypeVar('_SecondType')
 
 async def scrape_all() -> Iterable[CarFull]:
     return await scrape_specific([
-        (fetch_moller_auto_list, scrape_moller_car_detail),
-        (fetch_inchcape_list, scrape_inchcape_car_detail),
-        (fetch_brc_auto_list, scrape_brc_auto_car_detail),
+        (fetch_moller_urls, scrape_moller_car_detail),
+        (fetch_inchcape_urls, scrape_inchcape_car_detail),
+        (fetch_brc_auto_urls, scrape_brc_auto_car_detail),
     ])
 
 
@@ -55,10 +55,10 @@ async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) ->
 
 
 def fetch_car_pages(
-        get_cars: Callable[..., FutureResultE[Iterable[Car]]],
-        car_parser: Callable[[str], CarFull]
+    get_urls: Callable[..., FutureResultE[Iterable[str]]],
+    car_parser: Callable[[str], CarFull]
 ) -> FutureResultE[CarFullFutures]:
-    future_cars: FutureResultE[Iterable[Car]] = get_cars()
+    future_cars: FutureResultE[Iterable[str]] = get_urls()
 
     car_htmls: FutureResultE[CarHtmlFutures] = flow(
         future_cars,
@@ -76,8 +76,8 @@ def fetch_car_pages(
     )
 
 
-def fetch_cars_in_batches(res: Iterable[Car]) -> FutureResultE[CarHtmlFutures]:
-    url_batches = split_every(10, [car.url for car in res])
+def fetch_cars_in_batches(res: Iterable[str]) -> FutureResultE[CarHtmlFutures]:
+    url_batches = split_every(10, res)
     futures_of_batched_car_details_futures = tuple([fetch_car_htmls(url_batch) for url_batch in url_batches])
 
     future_of_batched_car_details_futures = flow(
