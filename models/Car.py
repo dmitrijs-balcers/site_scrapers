@@ -3,10 +3,10 @@ from typing import NamedTuple, Literal, Optional
 
 CarDate = NamedTuple("CarDate", [("month", str), ("year", str)])
 Drivetrain = Literal["fwd", "awd", "rwd"]
-BodyType = Literal["sedan", "hatchback", "wagon", "pickup", "suv", "minivan", "motorcycle"]
+BodyType = Literal["sedan", "hatchback", "wagon", "pickup", "suv", "minivan", "motorcycle", "coupe"]
 FuelType = Literal["petrol", "diesel", "hybrid"]
 Country = Literal["lv", "lt", "ee"]
-Dealer = Literal["moller", "inchcape"]
+Dealer = Literal["moller", "inchcape", "brc"]
 
 
 

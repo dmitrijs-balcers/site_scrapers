@@ -4,7 +4,6 @@ from gazpacho import Soup
 from returns.pipeline import flow
 from scrapers.utils import find_one, parse_price
 from returns.pointfree import bind
-from returns.result import Result, Success, Failure
 
 from models.Car import Car, CarDate
 
@@ -39,7 +38,7 @@ def fetch_brc_auto_list(page: int = 1) -> Iterable[Car]:
         details = find_one("p", {"class": "cars__subtitle"})(car) \
             .map(lambda _: _.text.split("|")) \
             .value_or(["", "", "", "", ""])
-        price = find_one("div", {"class": "cars-price"})(car).map(lambda _: _.text).value_or("")
+        price = find_one("div", {"class": "w-full lg:w-auto cars-price text-right pt-1"})(car).map(lambda _: _.text).value_or("")
         return Car(
             url=url.strip(),
             previewImgSrc=imgSrc,

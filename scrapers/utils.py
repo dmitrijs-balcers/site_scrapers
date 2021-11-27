@@ -22,7 +22,7 @@ def find_one(tag: str, attrs: Optional[Dict[str, Any]] = None) -> Callable[[Soup
 
 def find_many(tag: str, attrs: Optional[Dict[str, Any]] = None) -> Callable[[Soup], Maybe[List[Soup]]]:
     def _(soup: Soup) -> Maybe[List[Soup]]:
-        result = soup.find(tag, attrs, partial=False)
+        result = soup.find(tag, attrs, partial=False, mode='all')
 
         if type(result) is Soup:
             return Some([result])
