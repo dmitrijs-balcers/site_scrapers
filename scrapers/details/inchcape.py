@@ -15,7 +15,7 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
     url = flow(
         soup,
         find_one("link", {"rel": "canonical"}),
-        lambda _: _.bind(lambda _: _.attrs["href"]),
+        lambda _: _.bind(lambda _: _.attrs["href"].replace("lv//", "lv/")),
     )
 
     previewImg = flow(
