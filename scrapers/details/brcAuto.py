@@ -2,7 +2,7 @@ from typing import Tuple, Optional
 import re
 from gazpacho import Soup
 from returns.pipeline import flow
-from scrapers.utils import find_one, find_many
+from scrapers.utils import find_one, find_many, parse_price
 
 from models.Car import Car, CarDate, CarFull, Drivetrain, BodyType, FuelType
 
@@ -63,7 +63,7 @@ def scrape_brc_auto_car_detail(html: str) -> CarFull:
         type=data.get("#body"),
         transmission=data.get("#gearbox"),
         hp=data.get("#power"),
-        price=parse_int(price),
+        price=parse_price(price),
         vin=vin,
         registrationNo=None,
         mileage=parse_int(data.get("#speedometer")),
