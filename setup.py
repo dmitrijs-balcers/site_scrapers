@@ -21,7 +21,7 @@ print(setuptools.find_packages())
 
 setuptools.setup(
     name="site_scrapers",  # This is the name of the package
-    version="0.0.18",  # The initial release version
+    version="0.0.20",  # The initial release version
     author="Dmitrijs Balcers",  # Full name of the author
     description="Scrape cars from dealerships",
     long_description=long_description,  # Long description read from the the readme file
@@ -40,6 +40,8 @@ setuptools.setup(
     python_requires='>=3.10',  # Minimum version requirement of the package
     py_modules=["site_scrapers"],  # Name of the python package
     install_requires=[
+        "asyncio",
+        "httpx",
         "returns",
         "gazpacho",
         "requests",
