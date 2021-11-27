@@ -2,6 +2,7 @@ import re
 from typing import Tuple, Optional
 
 from gazpacho import Soup
+from returns.future import future, future_safe
 from returns.pipeline import flow
 from returns.pointfree import bind, map_
 from scrapers.utils import find_one, find_many, parse_price
