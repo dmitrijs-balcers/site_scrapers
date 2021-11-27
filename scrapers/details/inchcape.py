@@ -13,10 +13,17 @@ from models.Car import Car, CarDate, CarFull, FuelType, BodyType, Drivetrain
 def scrape_inchcape_car_detail(html: str) -> CarFull:
     soup = Soup(html)
 
-    url = find_one("link", {"rel": "canonical"})(soup).map(lambda _: _.attrs["href"]).value_or("")
+    url = flow(
+        soup,
+        find_one("link", {"rel": "canonical"}),
+        lambda _: _.bind(lambda _: _.attrs["href"]),
+    )
 
-    previewImg = find_one("div", {"class": "product-card__image-wrap"})(soup).map(
-        lambda _: _.attrs["data-src"]).value_or("")
+    previewImg = flow(
+        soup,
+        find_one("div", {"class": "product-card__image-wrap"}),
+        lambda _: _.bind(lambda _: _.attrs["data-src"]),
+    )
 
     summary = flow(
         find_one("h1", {"class": "product-card__title title-2"})(soup),
