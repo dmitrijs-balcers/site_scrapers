@@ -20,3 +20,6 @@ jobs:
     - name: Type check with mypy
       run: |
         mypy .
+    - name: Run unittest
+      run: |
+        python -m unittest
