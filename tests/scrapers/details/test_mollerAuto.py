@@ -31,7 +31,7 @@ class UtilsTestCase(unittest.TestCase):
                 hasWarranty=True,
                 doors='4/5',
                 country="lv",
-                dealer="moller"
+                dealer="moller-auto"
             ), scrape_moller_car_detail(car.read()))
 
     def test_audi_a6_sport(self) -> None:
@@ -57,7 +57,7 @@ class UtilsTestCase(unittest.TestCase):
                 hasWarranty=True,
                 doors='4/5',
                 country="lt",
-                dealer="moller"
+                dealer="moller-auto"
             ), scrape_moller_car_detail(car.read()))
 
     def test_vw_amarok(self) -> None:
@@ -83,7 +83,7 @@ class UtilsTestCase(unittest.TestCase):
                 hasWarranty=None,
                 doors='4/5',
                 country="ee",
-                dealer="moller"
+                dealer="moller-auto"
             ), scrape_moller_car_detail(car.read()))
 
 if __name__ == '__main__':

@@ -76,7 +76,7 @@ def scrape_brc_auto_car_detail(html: str) -> CarFull:
         hasWarranty=True if "Garantija" in list(data.values()) else False,
         doors=data.get("#doors"),
         country='lv',
-        dealer='brc'
+        dealer='brc-auto'
     )
 
 

@@ -32,7 +32,7 @@ class UtilsTestCase(unittest.TestCase):
                 hasWarranty=False,
                 doors="5",
                 country='lv',
-                dealer='brc'
+                dealer='brc-auto'
             ), scrape_brc_auto_car_detail(car.read()))
 
     def test_ford_focus(self) -> None:
@@ -58,7 +58,7 @@ class UtilsTestCase(unittest.TestCase):
                 hasWarranty=False,
                 doors="5",
                 country='lv',
-                dealer='brc'
+                dealer='brc-auto'
             ), scrape_brc_auto_car_detail(car.read()))
 
     def test_bmw_220(self) -> None:
@@ -84,7 +84,7 @@ class UtilsTestCase(unittest.TestCase):
                 hasWarranty=True,
                 doors="2",
                 country='lv',
-                dealer='brc'
+                dealer='brc-auto'
             ), scrape_brc_auto_car_detail(car.read()))
 
 

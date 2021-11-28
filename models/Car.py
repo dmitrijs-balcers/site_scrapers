@@ -6,7 +6,7 @@ Drivetrain = Literal["fwd", "awd", "rwd"]
 BodyType = Literal["sedan", "hatchback", "wagon", "pickup", "suv", "minivan", "motorcycle", "coupe"]
 FuelType = Literal["petrol", "diesel", "hybrid"]
 Country = Literal["lv", "lt", "ee"]
-Dealer = Literal["moller", "inchcape", "brc"]
+Dealer = Literal["moller-auto", "inchcape", "brc-auto"]
 
 
 @dataclass

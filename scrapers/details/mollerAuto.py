@@ -58,7 +58,7 @@ def scrape_moller_car_detail(html: str) -> CarFull:
         techInspDate=parse_date(details.get('Tehniskā skate:')),
         drivetrain=parse_drivetrain(details.get('Piedziņa:')),
         price=parse_price(info['Cena:']),
-        dealer="moller",
+        dealer="moller-auto",
         country=parse_country(info.get('Valsts:')),
         previewImgSrc="https://lietotiauto.mollerauto.lv" + imageSrc
     )
