@@ -31,7 +31,7 @@ _FirstType = TypeVar('_FirstType')
 _SecondType = TypeVar('_SecondType')
 
 
-async def scrape_all() -> Iterable[CarFull]:
+async def scrape_all() -> Iterable[IOResultE[CarFull]]:
     return await scrape_specific([
         (fetch_moller_urls, scrape_moller_car_detail),
         (fetch_inchcape_urls, scrape_inchcape_car_detail),
@@ -39,7 +39,7 @@ async def scrape_all() -> Iterable[CarFull]:
     ])
 
 
-async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) -> Iterable[CarFull]:
+async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) -> Iterable[IOResultE[CarFull]]:
     car_futures: Sequence[FutureResultE[CarFullFutures]] = [
         fetch_car_pages(sync_to_async(list_scraper), car_scraper)
         for (list_scraper, car_scraper) in scrapers
@@ -55,8 +55,8 @@ async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) ->
 
 
 def fetch_car_pages(
-    get_urls: Callable[..., FutureResultE[Iterable[str]]],
-    car_parser: Callable[[str], CarFull]
+        get_urls: Callable[..., FutureResultE[Iterable[str]]],
+        car_parser: Callable[[str], CarFull]
 ) -> FutureResultE[CarFullFutures]:
     future_cars: FutureResultE[Iterable[str]] = get_urls()
 
@@ -68,11 +68,7 @@ def fetch_car_pages(
 
     return flow(
         car_htmls,
-        lambda _: _.map(lambda _: [flow(
-            car,
-            lambda _: _.bind(lambda _: _),
-            car_parser,
-        ) for car in _]),
+        lambda _: _.map(lambda _: [car.map(car_parser) for car in _]),
     )
 
 
