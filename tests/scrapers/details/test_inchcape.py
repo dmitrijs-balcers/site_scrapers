@@ -1,6 +1,8 @@
 import unittest
 import os
 
+from returns.result import Success
+
 from models.Car import CarFull, CarDate
 from scrapers.details.inchcape import scrape_inchcape_car_detail
 
@@ -10,7 +12,7 @@ THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 class UtilsTestCase(unittest.TestCase):
     def test_bmw_x6m(self) -> None:
         with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_bmw_x6m.html")) as car:
-            self.assertEqual(CarFull(
+            self.assertEqual(Success(CarFull(
                 url='https://certified.inchcape.lv/auto/bmw/bmw-x6-m-2016-44-423-kw-f86-30393-02112021100237',
                 previewImgSrc='https://certified.inchcape.lv/assets/images/auto/34286/61a0aedb3807b.jpg',
                 summary='BMW X6 M 2016 4.4   423 kW F86, 133543 km',
@@ -32,11 +34,11 @@ class UtilsTestCase(unittest.TestCase):
                 doors=None,
                 country='lv',
                 dealer='inchcape'
-            ), scrape_inchcape_car_detail(car.read()))
+            )), scrape_inchcape_car_detail(car.read()))
 
     def test_ford_focus(self) -> None:
         with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_ford_focus.html")) as car:
-            self.assertEqual(CarFull(
+            self.assertEqual(Success(CarFull(
                 url='https://certified.inchcape.lv/auto/ford/ford-focus-2016-10-fwd-92-kw-ford1-14092021144651',
                 previewImgSrc='https://certified.inchcape.lv/assets/images/auto/34066/61781015e92b9.jpg',
                 summary='Ford Focus 2016 1.0  FWD 92 kW, 160247 km',
@@ -58,11 +60,11 @@ class UtilsTestCase(unittest.TestCase):
                 doors=None,
                 country='lv',
                 dealer='inchcape'
-            ), scrape_inchcape_car_detail(car.read()))
+            )), scrape_inchcape_car_detail(car.read()))
 
     def test_bmw_530(self) -> None:
         with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_bmw_530.html")) as car:
-            self.assertEqual(CarFull(
+            self.assertEqual(Success(CarFull(
                 url='https://certified.inchcape.lv/auto/bmw/bmw-530-2019-20-rwd-135-kw-g30-iperformance-30393-05102021164152',
                 previewImgSrc='https://certified.inchcape.lv/assets/images/auto/33944/61603d224f07d.jpg',
                 summary='BMW 530 2019 2.0  RWD 135 kW G30 , Iperformance, 47522 km',
@@ -84,7 +86,7 @@ class UtilsTestCase(unittest.TestCase):
                 doors=None,
                 country='lv',
                 dealer='inchcape'
-            ), scrape_inchcape_car_detail(car.read()))
+            )), scrape_inchcape_car_detail(car.read()))
 
 
 
