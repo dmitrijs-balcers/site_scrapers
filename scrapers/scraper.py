@@ -56,7 +56,6 @@ async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) ->
         Fold.collect(cars, IOResultE.from_value(())),
         lambda _: _.bind(lambda _: _),
         lambda _: flatten_iter(_),
-        list
     )
 
     return flow(
