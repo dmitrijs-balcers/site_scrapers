@@ -38,7 +38,8 @@ def scrape_moller_car_detail(html: str) -> CarFull:
     imageSrc = flow(find_one("a", {"class": "fancybox"})(soup), lambda _: _.bind(lambda v: v.attrs["href"]))
     url = flow(
         find_one("meta", {"property": "og:url"})(soup),
-        lambda _: _.map(lambda v: v.attrs["content"])
+        lambda _: _.map(lambda v: v.attrs["content"]),
+        lambda _: _.map(lambda _: re.sub(r"\/[^\/]+\/$", "", _))
     ).value_or("")
 
     return CarFull(

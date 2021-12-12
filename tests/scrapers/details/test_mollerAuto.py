@@ -13,7 +13,7 @@ class UtilsTestCase(unittest.TestCase):
     def test_audi(self) -> None:
         with open(os.path.join(THIS_FOLDER, "moller_data/moller_audi.html")) as car:
             self.assertEqual(Success(CarFull(
-                url="https://lietotiauto.mollerauto.lv/lv/vehicle/10236564/audi-a4-20-tfsi-110kw-aut-20-110kw-aut/",
+                url="https://lietotiauto.mollerauto.lv/lv/vehicle/10236564",
                 previewImgSrc='https://lietotiauto.mollerauto.lv/lv/vehicle/simage/10237323/10237323.jpg',
                 summary='Audi A4 2.0 TFSI 110kw aut. 2.0 110kW aut',
                 date=CarDate("07", "2020"),
@@ -39,7 +39,7 @@ class UtilsTestCase(unittest.TestCase):
     def test_audi_a6_sport(self) -> None:
         with open(os.path.join(THIS_FOLDER, "moller_data/moller_audi_a6_sport.html")) as car:
             self.assertEqual(Success(CarFull(
-                url="https://lietotiauto.mollerauto.lv/lv/vehicle/10236087/audi-a6-sport-20-150kw-aut/",
+                url="https://lietotiauto.mollerauto.lv/lv/vehicle/10236087",
                 previewImgSrc='https://lietotiauto.mollerauto.lv/lv/vehicle/simage/10236092/10236092.jpg',
                 summary='Audi A6 Sport 2.0 150kW aut',
                 date=CarDate("05", "2021"),
@@ -65,7 +65,7 @@ class UtilsTestCase(unittest.TestCase):
     def test_vw_amarok(self) -> None:
         with open(os.path.join(THIS_FOLDER, "moller_data/moller_vw_amarok.html")) as car:
             self.assertEqual(Success(CarFull(
-                url="https://lietotiauto.mollerauto.lv/lv/vehicle/10235196/volkswagen-amarok-20-106kw-meh/",
+                url="https://lietotiauto.mollerauto.lv/lv/vehicle/10235196",
                 previewImgSrc='https://lietotiauto.mollerauto.lv/lv/vehicle/simage/10236919/10236919.jpg',
                 summary='Volkswagen Amarok 2.0 106kW meh',
                 date=CarDate("12", "2010"),
