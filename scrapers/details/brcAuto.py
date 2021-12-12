@@ -2,11 +2,14 @@ from typing import Tuple, Optional
 import re
 from gazpacho import Soup
 from returns.pipeline import flow
+from returns.result import safe
+
 from scrapers.utils import find_one, find_many, parse_price
 
 from models.Car import CarDate, CarFull, Drivetrain, BodyType, FuelType
 
 
+@safe
 def scrape_brc_auto_car_detail(html: str) -> CarFull:
     soup = Soup(html)
     summary = flow(
