@@ -1,6 +1,8 @@
 import unittest
 import os
 
+from returns.result import Success
+
 from models.Car import CarFull, CarDate
 from scrapers.details.brcAuto import scrape_brc_auto_car_detail
 from scrapers.details.inchcape import scrape_inchcape_car_detail
@@ -11,7 +13,7 @@ THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 class UtilsTestCase(unittest.TestCase):
     def test_mercedes_ml_500(self) -> None:
         with open(os.path.join(THIS_FOLDER, "brc_data/brc_mercedes_ml_500.html")) as car:
-            self.assertEqual(CarFull(
+            self.assertEqual(Success(CarFull(
                 url='https://lv.brcauto.eu/automobilis/c834749-mercedes-benz-ml-500-5.5l-automatiska',
                 previewImgSrc='https://media.brcauto.eu/cars/all/834749_1.jpg',
                 summary='Mercedes-Benz ML 500',
@@ -33,11 +35,11 @@ class UtilsTestCase(unittest.TestCase):
                 doors="5",
                 country='lv',
                 dealer='brc-auto'
-            ), scrape_brc_auto_car_detail(car.read()))
+            )), scrape_brc_auto_car_detail(car.read()))
 
     def test_ford_focus(self) -> None:
         with open(os.path.join(THIS_FOLDER, "brc_data/brc_ford_focus.html")) as car:
-            self.assertEqual(CarFull(
+            self.assertEqual(Success(CarFull(
                 url='https://lv.brcauto.eu/automobilis/c832614-ford-focus-1.5l-mehaniska',
                 previewImgSrc='https://media.brcauto.eu/cars/all/832614_1.jpg',
                 summary='Ford Focus',
@@ -59,11 +61,11 @@ class UtilsTestCase(unittest.TestCase):
                 doors="5",
                 country='lv',
                 dealer='brc-auto'
-            ), scrape_brc_auto_car_detail(car.read()))
+            )), scrape_brc_auto_car_detail(car.read()))
 
     def test_bmw_220(self) -> None:
         with open(os.path.join(THIS_FOLDER, "brc_data/brc_bmw_220.html")) as car:
-            self.assertEqual(CarFull(
+            self.assertEqual(Success(CarFull(
                 url='https://lv.brcauto.eu/automobilis/c832466-bmw-220-2.0l-mehaniska',
                 previewImgSrc='https://media.brcauto.eu/cars/all/832466_1.jpg',
                 summary='BMW 220',
@@ -85,7 +87,7 @@ class UtilsTestCase(unittest.TestCase):
                 doors="2",
                 country='lv',
                 dealer='brc-auto'
-            ), scrape_brc_auto_car_detail(car.read()))
+            )), scrape_brc_auto_car_detail(car.read()))
 
 
 if __name__ == '__main__':
