@@ -3,6 +3,7 @@ from typing import Tuple, Dict, Optional
 
 from gazpacho import Soup
 from returns.pipeline import flow
+from returns.result import safe
 
 from models.Car import CarDate, CarFull, Country, FuelType, BodyType, Drivetrain
 from scrapers.utils import parse_price, find_one, find_many
@@ -10,6 +11,7 @@ from scrapers.utils import parse_price, find_one, find_many
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
 
+@safe
 def scrape_moller_car_detail(html: str) -> CarFull:
     soup = Soup(html)
 

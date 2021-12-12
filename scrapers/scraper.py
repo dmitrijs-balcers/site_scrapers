@@ -8,9 +8,10 @@ from returns.functions import tap
 from returns.pipeline import flow
 from returns.converters import flatten
 from returns.future import future_safe, FutureResultE
-from returns.io import IOResultE
+from returns.io import IOResultE, IOSuccess
 from returns.iterables import Fold
 from returns.pointfree import map_
+from returns.result import ResultE, Success
 
 from models.Car import CarFull
 from scrapers.details.brcAuto import scrape_brc_auto_car_detail
@@ -23,15 +24,18 @@ from scrapers.list.inchcape import fetch_inchcape_urls
 from utils.sync_to_async import sync_to_async
 
 ListScraper = Callable[[int], Iterable[str]]
-CarScraper = Callable[[str], CarFull]
 CarHtmlFutures = Iterable[FutureResultE[str]]
-CarFullFutures = Iterable[FutureResultE[CarFull]]
+
+CarScraperResult = ResultE[CarFull]
+CarScraper = Callable[[str], CarScraperResult]
+CarFullFutures = Iterable[FutureResultE[CarScraperResult]]
+
 T = TypeVar('T')
 _FirstType = TypeVar('_FirstType')
 _SecondType = TypeVar('_SecondType')
 
 
-async def scrape_all() -> Iterable[IOResultE[CarFull]]:
+async def scrape_all() -> Iterable[CarFull]:
     return await scrape_specific([
         (fetch_moller_urls, scrape_moller_car_detail),
         (fetch_inchcape_urls, scrape_inchcape_car_detail),
@@ -39,7 +43,8 @@ async def scrape_all() -> Iterable[IOResultE[CarFull]]:
     ])
 
 
-async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) -> Iterable[IOResultE[CarFull]]:
+# Will return successfully parsed instances
+async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) -> Iterable[CarFull]:
     car_futures: Sequence[FutureResultE[CarFullFutures]] = [
         fetch_car_pages(sync_to_async(list_scraper), car_scraper)
         for (list_scraper, car_scraper) in scrapers
@@ -47,16 +52,23 @@ async def scrape_specific(scrapers: Iterable[Tuple[ListScraper, CarScraper]]) ->
 
     cars: Sequence[IOResultE[Tuple[CarFullFutures, ...]]] = await asyncio.gather(*car_futures)
 
-    return flow(
+    res = flow(
         Fold.collect(cars, IOResultE.from_value(())),
         lambda _: _.bind(lambda _: _),
         lambda _: flatten_iter(_),
+        list
+    )
+
+    return flow(
+        Fold.collect_all(res, IOResultE.from_value(())),
+        lambda _: _.bind(lambda _: Fold.collect_all(_, Success(()))),
+        lambda _: _.bind(lambda _: _)
     )
 
 
 def fetch_car_pages(
         get_urls: Callable[..., FutureResultE[Iterable[str]]],
-        car_parser: Callable[[str], CarFull]
+        car_parser: CarScraper
 ) -> FutureResultE[CarFullFutures]:
     future_cars: FutureResultE[Iterable[str]] = get_urls()
 
