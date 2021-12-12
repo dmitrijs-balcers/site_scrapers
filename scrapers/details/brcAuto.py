@@ -20,8 +20,10 @@ def scrape_brc_auto_car_detail(html: str) -> CarFull:
 
     url = flow(
         soup,
-        find_one("meta", {"property": "og:url"}),
-        lambda _: _.bind(lambda _: _.attrs["content"])
+        find_one("ul", {"class": "header__langs"}),
+        lambda _: _.bind(find_one("li")),
+        lambda _: _.bind(find_one("a")),
+        lambda _: _.bind(lambda _: _.attrs["href"])
     )
 
     previewImgSrc = flow(
