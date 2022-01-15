@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "site_scrapers"
-version = "0.0.29"
+version = "0.0.31"
 description = ""
 readme = "README.md"
+homepage = "https://github.com/dmitrijs-balcers/site_scrapers"
 authors = ["Dmitrijs Balcers, <dmitrijs.balcers@gmail.com>"]
 
 [tool.poetry.dependencies]
