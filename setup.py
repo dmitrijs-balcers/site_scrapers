@@ -37,7 +37,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],  # Information to filter the project on PyPi website
     url="https://github.com/dmitrijs-balcers/site-scrapers/",
-    python_requires='>=3.10',  # Minimum version requirement of the package
+    python_requires='>=3.9',  # Minimum version requirement of the package
     py_modules=["site_scrapers"],  # Name of the python package
     install_requires=[
         "asyncio",
