@@ -4,9 +4,9 @@ from gazpacho import Soup
 from returns.pipeline import flow
 from returns.result import safe
 
-from scrapers.utils import find_one, find_many, parse_price
+from site_scrapers.scrapers.utils import find_one, find_many, parse_price
 
-from models.Car import CarDate, CarFull, Drivetrain, BodyType, FuelType
+from site_scrapers.models.Car import CarDate, CarFull, Drivetrain, BodyType, FuelType
 
 
 @safe

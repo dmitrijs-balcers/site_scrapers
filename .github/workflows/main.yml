@@ -22,4 +22,4 @@ jobs:
     - name: Run unittest
       run: |
         poetry run coverage run -m unittest
-        poetry run coverage report --fail-under=89
+        poetry run coverage report --fail-under=88

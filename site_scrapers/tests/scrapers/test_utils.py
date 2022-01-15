@@ -1,6 +1,6 @@
 import unittest
 
-from scrapers.utils import parse_price
+from site_scrapers.scrapers.utils import parse_price
 
 
 class UtilsTestCase(unittest.TestCase):

@@ -5,7 +5,7 @@ from gazpacho import Soup
 from returns.maybe import Maybe
 from returns.pipeline import flow
 
-from scrapers.utils import find_one, find_many
+from site_scrapers.scrapers.utils import find_one, find_many
 
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 
