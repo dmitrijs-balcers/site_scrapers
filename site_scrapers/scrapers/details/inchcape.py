@@ -6,9 +6,9 @@ from returns.pipeline import flow
 from returns.pointfree import bind
 from returns.result import safe
 
-from scrapers.utils import find_one, find_many
+from site_scrapers.scrapers.utils import find_one, find_many
 
-from models.Car import CarDate, CarFull, FuelType, BodyType, Drivetrain
+from site_scrapers.models.Car import CarDate, CarFull, FuelType, BodyType, Drivetrain
 
 @safe
 def scrape_inchcape_car_detail(html: str) -> CarFull:

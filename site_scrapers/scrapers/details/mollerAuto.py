@@ -5,8 +5,8 @@ from gazpacho import Soup
 from returns.pipeline import flow
 from returns.result import safe
 
-from models.Car import CarDate, CarFull, Country, FuelType, BodyType, Drivetrain
-from scrapers.utils import parse_price, find_one, find_many
+from site_scrapers.models.Car import CarDate, CarFull, Country, FuelType, BodyType, Drivetrain
+from site_scrapers.scrapers.utils import parse_price, find_one, find_many
 
 DOMAIN = "https://lietotiauto.mollerauto.lv"
 

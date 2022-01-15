@@ -3,8 +3,8 @@ import os
 
 from returns.result import Success
 
-from models.Car import CarFull, CarDate
-from scrapers.details.inchcape import scrape_inchcape_car_detail
+from site_scrapers.models.Car import CarFull, CarDate
+from site_scrapers.scrapers.details.inchcape import scrape_inchcape_car_detail
 
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 

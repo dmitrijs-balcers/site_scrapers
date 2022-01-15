@@ -1,7 +1,7 @@
 import asyncio
 import time
 
-from scrapers.scraper import scrape_all
+from site_scrapers.scrapers.scraper import scrape_all
 
 if __name__ == "__main__":
     start_time = time.time()

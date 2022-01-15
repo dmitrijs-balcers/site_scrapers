@@ -2,7 +2,7 @@ from typing import Iterable
 
 from gazpacho import Soup
 from returns.pipeline import flow
-from scrapers.utils import find_one, find_many
+from site_scrapers.scrapers.utils import find_one, find_many
 
 
 def fetch_brc_auto_urls(page: int = 1) -> Iterable[str]:

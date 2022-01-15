@@ -1,27 +1,25 @@
 import asyncio
-import time
 from itertools import islice, takewhile, repeat, chain
-from typing import List, Iterable, Sequence, TypeVar, Callable, Tuple
+from typing import Iterable, Sequence, TypeVar, Callable, Tuple
 
 import httpx
-from returns.functions import tap
 from returns.pipeline import flow
 from returns.converters import flatten
 from returns.future import future_safe, FutureResultE
-from returns.io import IOResultE, IOSuccess
+from returns.io import IOResultE
 from returns.iterables import Fold
 from returns.pointfree import map_
 from returns.result import ResultE, Success
 
-from models.Car import CarFull
-from scrapers.details.brcAuto import scrape_brc_auto_car_detail
-from scrapers.details.inchcape import scrape_inchcape_car_detail
-from scrapers.details.mollerAuto import scrape_moller_car_detail
-from scrapers.list.brcAuto import fetch_brc_auto_urls
-from scrapers.list.mollerAuto import fetch_moller_urls
-from scrapers.list.inchcape import fetch_inchcape_urls
+from site_scrapers.models.Car import CarFull
+from site_scrapers.scrapers.details.brcAuto import scrape_brc_auto_car_detail
+from site_scrapers.scrapers.details.inchcape import scrape_inchcape_car_detail
+from site_scrapers.scrapers.details.mollerAuto import scrape_moller_car_detail
+from site_scrapers.scrapers.list.brcAuto import fetch_brc_auto_urls
+from site_scrapers.scrapers.list.mollerAuto import fetch_moller_urls
+from site_scrapers.scrapers.list.inchcape import fetch_inchcape_urls
 
-from utils.sync_to_async import sync_to_async
+from site_scrapers.utils.sync_to_async import sync_to_async
 
 ListScraper = Callable[[int], Iterable[str]]
 CarHtmlFutures = Iterable[FutureResultE[str]]
