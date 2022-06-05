@@ -1,0 +1,2129 @@
+<html lang=""><script type="text/javascript">
+    var spector;
+    var captureOnLoad = false;
+    var captureOffScreen = false;
+    window.__SPECTOR_Canvases = [];
+
+    (function() {
+        var __SPECTOR_Origin_EXTENSION_GetContext = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.__SPECTOR_Origin_EXTENSION_GetContext = __SPECTOR_Origin_EXTENSION_GetContext;
+
+        if (typeof OffscreenCanvas !== 'undefined') {
+            var __SPECTOR_Origin_EXTENSION_OffscreenGetContext = OffscreenCanvas.prototype.getContext;
+            OffscreenCanvas.prototype.__SPECTOR_Origin_EXTENSION_OffscreenGetContext = __SPECTOR_Origin_EXTENSION_OffscreenGetContext;
+
+            OffscreenCanvas.prototype.getContext = function () {
+                var context = null;
+                if (!arguments.length) {
+                    return context;
+                }
+
+                if (arguments.length === 1) {
+                    context = this.__SPECTOR_Origin_EXTENSION_OffscreenGetContext(arguments[0]);
+                    if (context === null) {
+                        return context;
+                    }
+                }
+                else if (arguments.length === 2) {
+                    context = this.__SPECTOR_Origin_EXTENSION_OffscreenGetContext(arguments[0], arguments[1]);
+                    if (context === null) {
+                        return context;
+                    }
+                }
+
+                var contextNames = ["webgl", "experimental-webgl", "webgl2", "experimental-webgl2"];
+                if (contextNames.indexOf(arguments[0]) !== -1) {
+                    // context.canvas.setAttribute("__spector_context_type", arguments[0]);
+                    // Notify the page a canvas is available.
+                    var myEvent = new CustomEvent("SpectorWebGLCanvasAvailableEvent");
+                    document.dispatchEvent(myEvent);
+                    this.id = "Offscreen";
+                    window.__SPECTOR_Canvases.push(this);
+
+                    if (captureOnLoad) {
+                        // Ensures canvas is in the dom to capture the one we are currently tracking.
+                        if (false) {
+                            spector.captureContext(context, 500, false, false);
+                            captureOnLoad = false;
+                        }
+                    }
+                }
+
+                return context;
+            }
+        }
+
+        HTMLCanvasElement.prototype.getContext = function () {
+            var context = null;
+            if (!arguments.length) {
+                return context;
+            }
+
+            if (arguments.length === 1) {
+                context = this.__SPECTOR_Origin_EXTENSION_GetContext(arguments[0]);
+                if (context === null) {
+                    return context;
+                }
+            }
+            else if (arguments.length === 2) {
+                context = this.__SPECTOR_Origin_EXTENSION_GetContext(arguments[0], arguments[1]);
+                if (context === null) {
+                    return context;
+                }
+            }
+
+            var contextNames = ["webgl", "experimental-webgl", "webgl2", "experimental-webgl2"];
+            if (contextNames.indexOf(arguments[0]) !== -1) {
+                context.canvas.setAttribute("__spector_context_type", arguments[0]);
+                // Notify the page a canvas is available.
+                var myEvent = new CustomEvent("SpectorWebGLCanvasAvailableEvent");
+                document.dispatchEvent(myEvent);
+
+                if (captureOffScreen) {
+                    var found = false;
+                    for (var i = 0; i < window.__SPECTOR_Canvases.length; i++) {
+                        if (window.__SPECTOR_Canvases[i] === this) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        window.__SPECTOR_Canvases.push(this);
+                    }
+                }
+
+                if (captureOnLoad) {
+                    // Ensures canvas is in the dom to capture the one we are currently tracking.
+                    if (this.parentElement || false) {
+                        spector.captureContext(context, 500, false, false);
+                        captureOnLoad = false;
+                    }
+                }
+            }
+
+            return context;
+        }
+    })()</script><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8;">
+
+<title>Pērciet Lexus UX 2019 2.0   112 kW Premium pluss  2019 ar patiesu nobraukumu 19500 km Rīgā oficiālā dīlera salonā
+</title>
+
+<meta name="description" content="Iegādājaties mazlietotu  Lexus UX  ar nobraukumu 19500 km. Mazlietots Lexus UX 2019 2.0   112 kW Premium pluss Automātiskā par 33900 EUR, mazlietotu automobiļu tirdzniecības vietā Inchcape Certified Rīgā.">
+
+
+
+
+<base href="/">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#fff">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<link rel="preload" href="/_assets/fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/_assets/fonts/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/_assets/fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<link rel="shortcut icon" href="/_assets/img/favicons/favicon.ico" type="image/x-icon">
+<link rel="icon" sizes="16x16" href="/_assets/img/favicons/favicon-16x16.png" type="image/png">
+<link rel="icon" sizes="32x32" href="/_assets/img/favicons/favicon-32x32.png" type="image/png">
+<link rel="apple-touch-icon-precomposed" href="/_assets/img/favicons/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon" href="/_assets/img/favicons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/_assets/img/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/_assets/img/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/_assets/img/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/_assets/img/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/_assets/img/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/_assets/img/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/_assets/img/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/_assets/img/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="/_assets/img/favicons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/_assets/img/favicons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="/_assets/img/favicons/apple-touch-icon-1024x1024.png">
+
+<link rel="stylesheet" href="/_assets/styles/main.css?v=0.0.1">
+<script src="/_assets/libs/jquery-3.5.1.min.js"></script>
+
+<style>[_nghost-jnr-c63]{font-family:Open Sans,sans-serif;color:#121212}</style>
+
+<script style="display: none;">
+var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=
+new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"undefined"!=typeof a[f])try{var g=[];c[f]=JSON.stringify(a[f],function(h,k){try{if("function"!==typeof k){if("object"===typeof k&&null!==k){if(k instanceof HTMLElement||k instanceof Node||-1!=g.indexOf(k))return;g.push(k)}return k}}catch(m){}})}catch(h){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);
+</script>
+
+
+<script>
+	CSRF = "6f5b237814d596dd64b21ae3590bb60a810a1af889a39850ff65d2d1bee4d696";
+</script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdIjoEfAAAAACFigswi8gJYjg0leH0OxjEVptPC"></script>
+<style>
+	.grecaptcha-badge {
+		display: none !important;
+	}
+</style>
+
+
+<script>
+var _filter_data;
+var _lang = '';
+var _i18n = {
+	previousMonth : '',
+	nextMonth     : '',
+	months        : ['Janvāris','Februāris','Marts','Aprīlis','Maijs','Jūnijs','Jūlijs','Augusts','Septembris','Oktobris','Novembris','Decembris'],
+	weekdays      : ['svētdiena','pirmdiena','otrdiena','trešdiena','ceturtdiena','piektdiena','sestdiena'],
+	weekdaysShort : ['svt','prm','otr','tre','ctr','pkt','sst']
+}
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PK5TJ32');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Hotjar Tracking Code for https://certified.inchcape.lv/ -->
+<script>
+(function(h,o,t,j,a,r){
+h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+h._hjSettings={hjid:2975668,hjsv:6};
+a=o.getElementsByTagName('head')[0];
+r=o.createElement('script');r.async=1;
+r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+	</head>
+	<body class="body fadeIn" data-lang="">
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX;visibility:hidden"&gt;</noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<header class="header">
+	<div class="header__top">
+		<a href="/" class="logo header__logo header__logo_top">
+			<img src="/_assets/img/content/logo.png" alt="Inchcape Certified">
+		</a>
+		<div class="header__locations"><address class="local-data">
+	<a href="tel:+37167828700" class="local-data__phone local-data__phone_dark">+371 67 828 700</a>
+	<a href="https://goo.gl/maps/wyPAB93DaXUgmD1S6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">K. Ulmaņa gatvē 70</p>
+		</span>
+	</a>
+</address><address class="local-data">
+	<a href="tel:+37167303000" class="local-data__phone local-data__phone_dark">+371 67 303 000</a>
+	<a href="https://goo.gl/maps/DssPnXkArtdbuvJA6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">Skanstes iela 2A</p>
+		</span>
+	</a>
+</address><address class="local-data">
+	<a href="tel:+37167828600" class="local-data__phone local-data__phone_dark">+371 67 828 600</a>
+	<a href="https://goo.gl/maps/maEvFoCa5Gvn9eGE6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">Dārzciema iela 64A</p>
+		</span>
+	</a>
+</address></div>
+		<a href="https://wa.me/message/CJQPURKY6DZ4D1" class="whtsup-btn" target="_blank">
+			<span>Sazināties Whatsapp</span>
+			<svg>
+				<use xlink:href="/_assets/img/sprites/sprite.svg#whts"></use>
+			</svg>
+		</a>
+	</div>
+	<div class="header__bottom">
+		<div class="header__fixed js-header__fixed">
+			<a href="/" class="logo header__logo header__logo_fixed">
+				<img src="/_assets/img/content/logo.png" alt="Inchcape Certified">
+			</a>
+			<div class="header__fixed-left">
+				<nav class="nav js-nav header__nav" data-linktext="Tomēr..." data-linktextall="Izvēlne">
+					<ul class="nav__list navmenu">
+						<li class="nav__item"><a href="auto">Pieejamie auto</a></li>
+						<li class="nav__item"><a href="buyback">Auto atpirkšana</a></li>
+						<li class="nav__item"><a href="for-company">Uzņēmumiem</a></li>
+						<li class="nav__item"><a href="blog">Jaunumi</a></li>
+						<li class="nav__item"><a href="about">Par mums</a></li>
+						<li class="nav__item"><a href="contacts">Kontakti</a></li>
+					</ul>
+				</nav>
+				<div class="favorite header__favorite header__favorite_fixed">
+					<a href="favourites" class="favorite__link">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+						<span>Izlase</span>
+					</a>
+				</div>
+				<div class="flags header__flags">
+					<div class="flags__label">
+						<a href="/" class="flags__lang lang_item active" lang="">latviski</a>
+						<a href="/ru" class="flags__lang lang_item" lang="ru">русский</a>
+					</div>
+				</div>
+			</div>
+			<button class="header__menu js-popup-link" data-mfp-src="#menu-modal">
+				<span>Izvēlne</span>
+				<img src="/_assets/img/svg/menu.svg" alt="">
+			</button>
+		</div>
+	</div>
+</header>
+<section class="menu-modal" id="menu-modal">
+	<div class="menu-modal__inner">
+		<div class="menu-modal__top">
+			<a href="/" class="logo menu-modal__logo">
+			<img src="/_assets/img/content/logo.png" alt="Inchcape Certified">
+			</a>
+			<button class="menu-modal__close js-modal-close">
+				<span>aizveriet</span>
+				<img src="/_assets/img/svg/close1.svg" alt="">
+			</button>
+		</div>
+		<div class="flags menu-modal__flag">
+			<div class="flags__label">
+				<a href="/" class="flags__lang lang_item active" lang="">latviski</a>
+				<a href="/ru" class="flags__lang lang_item" lang="ru">русский</a>
+			</div>
+		</div>
+		<div class="favorite menu-modal__favorite">
+			<a href="favourites" class="favorite__link active">
+				<svg>
+					<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+				</svg>
+				<span>Izlase</span>
+			</a>
+		</div>
+		<nav class="nav menu-modal__nav">
+			<ul class="nav__list">
+				<li class="nav__item"><a href="auto">Pieejamie auto</a></li>
+				<li class="nav__item"><a href="buyback">Auto atpirkšana</a></li>
+				<li class="nav__item"><a href="for-company">Uzņēmumiem</a></li>
+				<li class="nav__item"><a href="blog">Jaunumi</a></li>
+				<li class="nav__item"><a href="about">Par mums</a></li>
+				<li class="nav__item"><a href="contacts">Kontakti</a></li>
+			</ul>
+		</nav>
+		<div class="menu-modal__locations">
+			<address class="local-data">
+	<a href="tel:+37167828700" class="local-data__phone local-data__phone_dark">+371 67 828 700</a>
+	<a href="https://goo.gl/maps/wyPAB93DaXUgmD1S6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">K. Ulmaņa gatvē 70</p>
+		</span>
+	</a>
+</address><address class="local-data">
+	<a href="tel:+37167303000" class="local-data__phone local-data__phone_dark">+371 67 303 000</a>
+	<a href="https://goo.gl/maps/DssPnXkArtdbuvJA6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">Skanstes iela 2A</p>
+		</span>
+	</a>
+</address><address class="local-data">
+	<a href="tel:+37167828600" class="local-data__phone local-data__phone_dark">+371 67 828 600</a>
+	<a href="https://goo.gl/maps/maEvFoCa5Gvn9eGE6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">Dārzciema iela 64A</p>
+		</span>
+	</a>
+</address>
+		</div>
+		<a href="https://wa.me/message/CJQPURKY6DZ4D1" class="whtsup-btn menu-modal__whtsup-btn" target="_blank">
+			<span>Sazināties Whatsapp</span>
+			<svg>
+				<use xlink:href="/_assets/img/sprites/sprite.svg#whts"></use>
+			</svg>
+		</a>
+	</div>
+</section>
+		<main class="main">
+
+			<section class="breadcrumbs">
+				<div class="breadcrumbs__inner">
+					<nav class="breadcrumbs__nav">
+						<ul class="breadcrumbs__list">
+							<li class="breadcrumbs__item breadcrumbs__item_home"><a href="/">Mājas lapa</a><div class="breadcrumbs__item-arrow">
+	<svg>
+		<use xlink:href="/_assets/img/sprites/sprite.svg#arrow-right_2"></use>
+	</svg>
+</div></li>
+<li class="breadcrumbs__item"><a href="/auto/">Atrastas&nbsp;&nbsp;automašīnas</a><div class="breadcrumbs__item-arrow">
+	<svg>
+		<use xlink:href="/_assets/img/sprites/sprite.svg#arrow-right_2"></use>
+	</svg>
+</div></li>
+<li class="breadcrumbs__item"><a href="auto/lexus">Lexus</a><div class="breadcrumbs__item-arrow">
+	<svg>
+		<use xlink:href="/_assets/img/sprites/sprite.svg#arrow-right_2"></use>
+	</svg>
+</div></li>
+<li class="breadcrumbs__item"><a href="auto/lexus/ux">UX</a><div class="breadcrumbs__item-arrow">
+	<svg>
+		<use xlink:href="/_assets/img/sprites/sprite.svg#arrow-right_2"></use>
+	</svg>
+</div></li>
+<li class="breadcrumbs__item breadcrumbs__item_current">Lexus UX 2019 2.0   112 kW Premium pluss, 19 500 km</li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+			<section class="car-model">
+				<div class="car-model__title">
+					<h1 class="title">Lexus UX 2019 2.0   112 kW Premium pluss, 19 500 km
+	<button type="button" class="add_to_favourites" data-id="2450" title="Izlase">
+		<svg class="car-model__star">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+		</svg>
+	</button>
+</h1>
+				</div>
+				<div class="car-model__container">
+					<div class="car-model__inner">
+						<div class="car-model__item">
+
+							<section class="gallery">
+								<div class="gallery__wrap">
+									<div class="gallery__top js-gallery-top" data-arrows="/_assets/img/sprites/sprite.svg#arrow-left, /_assets/img/sprites/sprite.svg#arrow-right">
+
+<a href="/assets/images/auto/2450/627b8f3221975.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f3221975.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f34687df.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f34687df.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f36d68de.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f36d68de.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f38dd859.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f38dd859.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f3d980d9.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f3d980d9.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f409b50b.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f409b50b.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f431e38f.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f431e38f.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f462ef61.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f462ef61.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f48588bc.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f48588bc.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f4b415ae.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f4b415ae.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f4d9a190.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f4d9a190.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f4fbc877.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f4fbc877.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f529cfda.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f529cfda.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f550f726.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f550f726.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f583cb3f.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f583cb3f.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f5c29f0c.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f5c29f0c.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f5edf6a2.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f5edf6a2.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f6160b87.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f6160b87.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f641a92b.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f641a92b.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f67b9e5c.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f67b9e5c.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f6a26da3.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f6a26da3.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f6cb94ff.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f6cb94ff.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f6f2ebbe.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f6f2ebbe.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+<a href="/assets/images/auto/2450/627b8f730a88d.jpg" class="gallery__item" data-fancybox="gallery" data-width="2048" data-height="1365">
+	<picture>
+		<img src="/assets/images/auto/2450/640x480-627b8f730a88d.jpg" alt="Lexus UX 2019">
+	</picture>
+</a>
+
+									</div>
+									<div class="gallery__views">
+										<div class="gallery__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+										<div class="gallery__views-numb gallery__views-numb_first">
+											25
+										</div>
+
+									</div>
+								</div>
+								<div class="gallery__thumbs js-thumbs">
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f3221975.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f34687df.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f36d68de.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f38dd859.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f3d980d9.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f409b50b.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f431e38f.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f462ef61.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f48588bc.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f4b415ae.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f4d9a190.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f4fbc877.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f529cfda.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f550f726.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f583cb3f.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f5c29f0c.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f5edf6a2.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f6160b87.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f641a92b.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f67b9e5c.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f6a26da3.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f6cb94ff.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f6f2ebbe.jpg" alt="Lexus UX 2019"></picture></div>
+
+<div class="gallery__thumbs-item js-gallery-thumb"><picture><img src="/assets/images/auto/2450/640x480-627b8f730a88d.jpg" alt="Lexus UX 2019"></picture></div>
+
+								</div>
+							</section>
+
+						</div>
+						<div class="car-model__item">
+							<section class="car-props">
+								<div class="car-props__inner">
+									<div class="car-props__top">
+
+<div class="car-props__head">
+
+	<div class="car-props__cost">33 900 € <div class="tax-info">(PVN nav piemērojams)</div></div>
+	<div class="car-props__discount car-props__text-16"></div>
+	<div class="car-props__moth car-props__text-16">no € 357.73 / mēn.*</div>
+
+</div>
+										<address class="car-props__data">
+											<div class="car-props__data-col">
+	<p class="car-props__data-title car-props__text-12">SALONS:</p>
+	<p class="car-props__data-text car-props__text-16">
+		Inchcape Certified Ulmaņa
+		K. Ulmaņa gatvē 70
+	</p>
+	<a href="https://goo.gl/maps/wyPAB93DaXUgmD1S6" target="_blank" class="car-props__data-map car-props__text-12">Parādīt kartē</a>
+</div>
+<div class="car-props__data-col">
+	<p class="car-props__data-title car-props__text-12">TĀLRUNIS:</p>
+	<a href="tel:+37167828700" class="car-props__data-text car-props__text-16">+371 67 828 700</a>
+</div>
+										</address>
+										<div class="car-props__list">
+											<ul>
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Izlaiduma gads</span>
+			<div class="car-props__list-val car-props__text-16">2019</div>
+		</div>
+	</li>
+
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Virsbūves tips</span>
+			<div class="car-props__list-val car-props__text-16">SUV</div>
+		</div>
+	</li>
+
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Nobraukums</span>
+			<div class="car-props__list-val car-props__text-16">19 500 km</div>
+		</div>
+	</li>
+
+
+</ul>
+<ul>
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Piedziņas veids</span>
+			<div class="car-props__list-val car-props__text-16">FWD</div>
+		</div>
+	</li>
+
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Dzinējs</span>
+			<div class="car-props__list-val car-props__text-16">Hibrīds</div>
+		</div>
+	</li>
+
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Pārnesumkārba</span>
+			<div class="car-props__list-val car-props__text-16">Automātiskā</div>
+		</div>
+	</li>
+
+
+	<li class="car-props__list-item">
+		<div class="car-props__list-icon"> <img src="/_assets/img/svg/p-icon8.svg" alt=""> </div>
+		<div class="car-props__list-right"> <span class="car-props__list-key car-props__text-12">Dzinēja tilpums</span>
+			<div class="car-props__list-val car-props__text-16">1987 cm<sup>3</sup></div>
+		</div>
+	</li>
+
+</ul>
+										</div>
+										<div class="car-props__foot">
+
+<button class="btn btn_blue mfp-modal-link" href="#OrderModal">Uzzināt vairāk</button>
+<button class="btn btn_clear_blue mfp-modal-link" href="#AutoDNAModal">Saņemt AutoDNA</button>
+<button class="btn btn_dark mfp-modal-link" href="#TestDriveModal">Pieteikt izmēģinājuma braucienu</button>
+
+										</div>
+									</div>
+									<div class="car-props__bottom">
+										<div class="car-props__new">
+											<h5 class="car-props__new-title">JAUNUMS!</h5>
+<p class="car-props__new-text car-props__text-16">Apskatiet auto tiešsaistē, neizejot no mājām, vai sazinieties ar mums caur Whatsapp</p>
+<div class="car-props__new-row">
+	<button class="btn btn_blue mfp-modal-link" href="#OnlineConsultModal">ONLINE konsultācija</button>
+	<a class="btn btn_clear_blue tac" href="https://wa.me/message/CJQPURKY6DZ4D1" target="_blank">Sazināties Whatsapp</a>
+</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="insert-tab">
+				<div class="container">
+					<div class="insert-tab__inner">
+						<ul class="insert-tab__tabs">
+							<li class="insert-tab__tab text active js-insert-tab-tab">Tehniskie dati</li>
+<li class="insert-tab__tab text js-insert-tab-tab">Aprīkojums</li>
+<li class="insert-tab__tab text js-insert-tab-tab">Pamatinformācija</li>
+						</ul>
+						<div class="insert-tab__body">
+							<div class="insert-tab__body-item active js-insert-tab-content">
+								<section class="insert-tab__tech">
+									<ul class="insert-tab__tech-col">
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Zīmols</div>
+		<div class="insert-tab__tech-val">Lexus</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Modelis</div>
+		<div class="insert-tab__tech-val">UX</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Modifikācija</div>
+		<div class="insert-tab__tech-val">2019 2.0   112 kW Premium pluss</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Nobraukums</div>
+		<div class="insert-tab__tech-val">19 500 km</div>
+	</li>
+
+
+</ul>
+<ul class="insert-tab__tech-col">
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">VIN</div>
+		<div class="insert-tab__tech-val">JTHY65BH602032276</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Izlaiduma gads</div>
+		<div class="insert-tab__tech-val">2019</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Virsbūves tips</div>
+		<div class="insert-tab__tech-val">SUV</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Piedziņas veids</div>
+		<div class="insert-tab__tech-val">FWD</div>
+	</li>
+
+
+	<li class="insert-tab__tech-row insert-tab__text">
+		<div class="insert-tab__tech-key">Pārnesumkārba</div>
+		<div class="insert-tab__tech-val">Automātiskā</div>
+	</li>
+
+</ul>
+								</section>
+							</div>
+							<div class="insert-tab__body-item js-insert-tab-content">
+								<section class="insert-tab__equipment">
+									<ul class="insert-tab__equipment-aside"><li class="insert-tab__equipment-select insert-tab__text js-equipment-select active">
+			<span>Informācijas sistēmas</span>
+		</li><li class="insert-tab__equipment-select insert-tab__text js-equipment-select ">
+			<span>Papildus aprīkojums</span>
+		</li><li class="insert-tab__equipment-select insert-tab__text js-equipment-select ">
+			<span>Interjers</span>
+		</li><li class="insert-tab__equipment-select insert-tab__text js-equipment-select ">
+			<span>Drošība</span>
+		</li><li class="insert-tab__equipment-select insert-tab__text js-equipment-select ">
+			<span>Komforts</span>
+		</li></ul><div class="insert-tab__equipment-body  active js-equipment-body"><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Bluetooth</li><li class=" insert-tab__text">Audiosistēma</li><li class=" insert-tab__text">Navigācijas sistēma</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Borta dators</li><li class=" insert-tab__text">Brīvroku sistēma</li></ul></div><div class="insert-tab__equipment-body   js-equipment-body"><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Riepu spiediena kontrole</li><li class=" insert-tab__text">Start-stop sistēma</li><li class=" insert-tab__text">Vilkšanas āķis (noņemams)</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Ziemas pakotne</li><li class=" insert-tab__text">Factory warranty</li><li class=" insert-tab__text">Servisa grāmatiņa</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Otra atslēga</li></ul></div><div class="insert-tab__equipment-body   js-equipment-body"><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Elektriski regulējami sēdekļi</li><li class=" insert-tab__text">Regulējams stūres novietojums</li><li class=" insert-tab__text">Multistūre</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Ātrumu pārslēdzēji pie stūres</li><li class=" insert-tab__text">Apsildāmi sēdekļi</li><li class=" insert-tab__text">Regulējama sēdekļu muguras daļa</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Salona apgaismojums</li><li class=" insert-tab__text">Priekšējais elkoņbalsts</li></ul></div><div class="insert-tab__equipment-body   js-equipment-body"><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Stūres pastiprinātājs</li><li class=" insert-tab__text">Centrālā atslēga</li><li class=" insert-tab__text">ABS pretbloķēšanas sistēma</li><li class=" insert-tab__text">Gaisa spilveni</li><li class=" insert-tab__text">Elektroniska rokasbremze</li><li class=" insert-tab__text">Signalizācija</li><li class=" insert-tab__text">Vadītāja noguruma monitorēšana</li><li class=" insert-tab__text">Elektroniskā stabilitātes sistēma (ESP)</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Bremzēšanas spēka sadale</li><li class=" insert-tab__text">Braukšanas joslu brīdinājuma sistēma</li><li class=" insert-tab__text">Braukšanas joslu maiņu asistēšana</li><li class=" insert-tab__text">Ceļa zīmju asistēšana</li><li class=" insert-tab__text">Sadursmes novēršanas sistēma</li><li class=" insert-tab__text">Isofix bērnu sēdeklīšu stiprinājumi</li><li class=" insert-tab__text">Pretbuksēšanas sistēma (ASR)</li><li class=" insert-tab__text">Lietus sensors</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">LED lukturi</li><li class=" insert-tab__text">Priekšējo lukturu gaismas tāluma regulēšana</li><li class=" insert-tab__text">Automātiskās gaismas</li><li class=" insert-tab__text">Papildu gaismas</li><li class=" insert-tab__text">Gaismu aizture aizslēdzot/atslēdzot automobili</li><li class=" insert-tab__text">Lasīšanas gaismas</li></ul></div><div class="insert-tab__equipment-body   js-equipment-body"><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Klimata kontrole (trīszonu)</li><li class=" insert-tab__text">Elektriski regulējami sānu spoguļi</li><li class=" insert-tab__text">Elektriski atverami/aizverami stikli</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Kruīza kontrole</li><li class=" insert-tab__text">Elektriska durvju aizvēršana</li><li class=" insert-tab__text">Elektriska sānu durvju aizvēršana</li></ul><ul class="insert-tab__equipment-col"><li class=" insert-tab__text">Parkošanās kamera</li><li class=" insert-tab__text">Parkošanās sensori</li></ul></div>
+								</section>
+							</div>
+							<div class="insert-tab__body-item js-insert-tab-content"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="price price_calc">
+				<div class="container">
+					<div class="price__inner price__inner_calc">
+	<section class="calculator-leasing">
+
+		<div class="calculator-leasing__wrap" style="    max-width: 760px;">
+			<h2 class="calculator-leasing__title title">Priekšlīzinga kalkulators</h2>
+			<p class="calculator-leasing__text text">
+				Vēlaties iegādāties jaunu ikdienas sabiedroto ar līzingu?<br>
+				Mēs par to esam padomājuši.<br>
+				Aizpildiet šo īso pieteikuma formu un noskaidrojiet savas iespējas iegādāties auto līzingā.
+			</p>
+			<form name="finance_leasing_form" action="#" class="calculator-leasing__form js-calculator-leasing__content active" data-tab="Finanšu līzings">
+				<div class="calculator-leasing__leasing">
+					<p class="calculator-leasing__leasing-text text">Finanšu līzings</p>
+					<div class="calculator-leasing__stick calculator-leasing__stick_orange">no € <span class="payment"></span> / mēn.*</div>
+				</div>
+				<input name="type" value="0" hidden="">
+				<input name="price" value="33900" hidden="">
+				<div class="calculator-leasing__form-wrap">
+					<div class="calculator-leasing__form-col">
+						<div class="calculator-leasing__form-top">
+							<p class="calculator-leasing__form-label">Līzinga periods, gadi:</p>
+						</div>
+						<div class="calculator-leasing__form-row">
+							<label for="fl-period-3" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-period-3" name="period" value="3" hidden="">
+								<span class="calculator-leasing__form-cell">3</span>
+							</label>
+							<label for="fl-period-4" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-period-4" name="period" value="4" hidden="">
+								<span class="calculator-leasing__form-cell">4</span>
+							</label>
+							<label for="fl-period-5" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-period-5" name="period" value="5" hidden="">
+								<span class="calculator-leasing__form-cell">5</span>
+							</label>
+							<label for="fl-period-6" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-period-6" name="period" value="6" hidden="">
+								<span class="calculator-leasing__form-cell">6</span>
+							</label>
+							<label for="fl-period-7" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-period-7" name="period" value="7" hidden="" checked="">
+								<span class="calculator-leasing__form-cell">7</span>
+							</label>
+						</div>
+					</div>
+					<div class="calculator-leasing__form-col">
+						<div class="calculator-leasing__form-top">
+							<p class="calculator-leasing__form-label">Pirmā iemaksa:</p>
+							<div class="calculator-leasing__stick calculator-leasing__stick_blue"><span class="down-payment"></span> EUR</div>
+						</div>
+						<div class="calculator-leasing__form-row">
+							<label for="fl-deposit-1" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-deposit-1" name="deposit" value="0.1" hidden="">
+								<span class="calculator-leasing__form-cell">10%</span>
+							</label>
+							<label for="fl-deposit-2" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-deposit-2" name="deposit" value="0.2" hidden="" checked="">
+								<span class="calculator-leasing__form-cell">20%</span>
+							</label>
+							<label for="fl-deposit-3" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-deposit-3" name="deposit" value="0.3" hidden="">
+								<span class="calculator-leasing__form-cell">30%</span>
+							</label>
+							<label for="fl-deposit-4" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-deposit-4" name="deposit" value="0.4" hidden="">
+								<span class="calculator-leasing__form-cell">40%</span>
+							</label>
+							<label for="fl-deposit-5" class="calculator-leasing__form-radio">
+								<input type="radio" id="fl-deposit-5" name="deposit" value="0.5" hidden="">
+								<span class="calculator-leasing__form-cell">50%</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn btn_dark calculator-leasing__form-submit mfp-modal-link" href="#FinanceLeasingModal">Pieteikties finanšu līzingam</button>
+				<p class="calculator-leasing__exp">Inchcape Motors Latvia SIA piedāvā finansējumu sadarbībā ar vadošajām līzinga kompānijām.</p>
+				<p class="calculator-leasing__exp">Aprēķins veikts, ņemot vērā izvēlēta automobiļa cenu finanšu līzingā ar <span class="leasing-payment"></span>% iemaksu uz <span class="leasing-period"></span> mēnešiem.</p>
+				<p class="calculator-leasing__exp">Procentu likme 2,95% + EURIBOR (6 mēn.), administrēšanas maksa 1,5%.Aizņemies atbildīgi, izvērtējot savas iespējas atmaksāt.</p>
+				<p class="calculator-leasing__exp">Līzinga kalkulatoram ir informatīva nozīme.</p>
+			</form>
+
+		</div>
+	</section>
+	<div class="price__img price__img_man">
+		<picture> <img src="/_assets/img/content/price/man.webp" alt="" loading="lazy"> </picture>
+	</div>
+</div>
+				</div>
+			</section>
+			<section class="products products_white-bg related">
+				<div class="container">
+					<h2 class="products__title products__title_center title">VISLABĀKIE PIEDĀVĀJUMI</h2>
+<p class="products__text text"></p>
+<div class="products__inner products__slider js-slider-slick" data-arrows="/_assets/img/sprites/sprite.svg#arrow-left, /_assets/img/sprites/sprite.svg#arrow-right" data-slider="true">
+	<article class="js-product-item products__item">
+	<a href="auto/bmw/bmw-318-ford1-02122021131343">
+		<div class="products__img">
+
+				<div class="products__stick">ATLAIDE 6 510 €</div>
+
+			<!--div class="products__benefit">
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.1.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.2.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.3.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.4.svg" alt=""></div>
+			</div-->
+			<picture><img src="/assets/images/auto/2144/640x480-61c075fd40208.jpg" alt="  "></picture>
+			<div class="products__views">
+				<div class="products__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+				<div class="products__views-numb products__views-numb_first">
+					14
+				</div>
+
+			</div>
+		</div>
+	</a>
+	<div class="products__body">
+		<div class="products__col">
+			<div class="products__body-title js-product-title">
+				<div class="products__row">
+					<h3 class="products__name">BMW 318</h3>
+					<div class="products__star add_to_favourites" data-id="2144">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+					</div>
+				</div>
+				<p class="products__item-text">2019 2.0   110 kW</p>
+			</div>
+			<div class="products__prop js-products-props">
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+						<p class="products__props-text">2019</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+						<p class="products__props-text">Sedans</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+						<p class="products__props-text">38 130 km</p>
+					</li>
+
+				</ul>
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+						<p class="products__props-text">RWD</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+						<p class="products__props-text">Dīzeļdegviela</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+						<p class="products__props-text">Automātiskā</p>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="products__col products__col_right">
+			<div class="products__price">
+
+				<div class="products__price-main">
+					31 990 €
+					<div class="tax-info tac">ar PVN</div>
+				</div>
+				<div class="products__price-cut">38 500 € </div>
+				<div class="products__price-calc">no € 337.58 / mēn.*</div>
+
+			</div>
+
+			<a href="/auto/bmw/bmw-318-ford1-02122021131343">
+				<button class="btn btn_blue products__btn">Vairāk par auto</button>
+			</a>
+
+		</div>
+	</div>
+</article><article class="js-product-item products__item">
+	<a href="auto/land-rover/land-rover-range-rover-velar-jlr1-28022022124210">
+		<div class="products__img">
+
+				<div class="products__stick">ATLAIDE 5 000 €</div>
+
+			<!--div class="products__benefit">
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.1.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.2.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.3.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.4.svg" alt=""></div>
+			</div-->
+			<picture><img src="/assets/images/auto/2185/640x480-627d0bec750bc.jpg" alt="  "></picture>
+			<div class="products__views">
+				<div class="products__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+				<div class="products__views-numb products__views-numb_first">
+					25
+				</div>
+
+			</div>
+		</div>
+	</a>
+	<div class="products__body">
+		<div class="products__col">
+			<div class="products__body-title js-product-title">
+				<div class="products__row">
+					<h3 class="products__name">Land Rover Range Rover Velar</h3>
+					<div class="products__star add_to_favourites" data-id="2185">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+					</div>
+				</div>
+				<p class="products__item-text">2019 2.0   177 kW S</p>
+			</div>
+			<div class="products__prop js-products-props">
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+						<p class="products__props-text">2019</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+						<p class="products__props-text">SUV</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+						<p class="products__props-text">74 000 km</p>
+					</li>
+
+				</ul>
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+						<p class="products__props-text">AWD</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+						<p class="products__props-text">Dīzeļdegviela</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+						<p class="products__props-text">Automātiskā</p>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="products__col products__col_right">
+			<div class="products__price">
+
+				<div class="products__price-main">
+					47 900 €
+					<div class="tax-info tac">ar PVN</div>
+				</div>
+				<div class="products__price-cut">52 900 € </div>
+				<div class="products__price-calc">no € 505.47 / mēn.*</div>
+
+			</div>
+
+			<a href="/auto/land-rover/land-rover-range-rover-velar-jlr1-28022022124210">
+				<button class="btn btn_blue products__btn">Vairāk par auto</button>
+			</a>
+
+		</div>
+	</div>
+</article><article class="js-product-item products__item">
+	<a href="auto/jaguar/jaguar-f-pace-jlr1-10022022171019">
+		<div class="products__img">
+
+				<div class="products__stick">ATLAIDE 4 200 €</div>
+
+			<!--div class="products__benefit">
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.1.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.2.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.3.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.4.svg" alt=""></div>
+			</div-->
+			<picture><img src="/assets/images/auto/2173/640x480-627d093cdb5f8.jpg" alt="  "></picture>
+			<div class="products__views">
+				<div class="products__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+				<div class="products__views-numb products__views-numb_first">
+					25
+				</div>
+
+			</div>
+		</div>
+	</a>
+	<div class="products__body">
+		<div class="products__col">
+			<div class="products__body-title js-product-title">
+				<div class="products__row">
+					<h3 class="products__name">Jaguar F-Pace</h3>
+					<div class="products__star add_to_favourites" data-id="2173">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+					</div>
+				</div>
+				<p class="products__item-text">2017 2.0 bi-turbo  177 kW F-Pce</p>
+			</div>
+			<div class="products__prop js-products-props">
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+						<p class="products__props-text">2017</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+						<p class="products__props-text">SUV</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+						<p class="products__props-text">133 500 km</p>
+					</li>
+
+				</ul>
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+						<p class="products__props-text">AWD</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+						<p class="products__props-text">Dīzeļdegviela</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+						<p class="products__props-text">Automātiskā</p>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="products__col products__col_right">
+			<div class="products__price">
+
+				<div class="products__price-main">
+					28 700 €
+					<div class="tax-info tac">ar PVN</div>
+				</div>
+				<div class="products__price-cut">32 900 € </div>
+				<div class="products__price-calc">no € 302.86 / mēn.*</div>
+
+			</div>
+
+			<a href="/auto/jaguar/jaguar-f-pace-jlr1-10022022171019">
+				<button class="btn btn_blue products__btn">Vairāk par auto</button>
+			</a>
+
+		</div>
+	</div>
+</article><article class="js-product-item products__item">
+	<a href="auto/volvo/volvo-s90-ford1-28092021125935">
+		<div class="products__img">
+
+				<div class="products__stick">ATLAIDE 3 810 €</div>
+
+			<!--div class="products__benefit">
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.1.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.2.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.3.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.4.svg" alt=""></div>
+			</div-->
+			<picture><img src="/assets/images/auto/2129/640x480-616849c1b864b.jpg" alt="  "></picture>
+			<div class="products__views">
+				<div class="products__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+				<div class="products__views-numb products__views-numb_first">
+					11
+				</div>
+
+			</div>
+		</div>
+	</a>
+	<div class="products__body">
+		<div class="products__col">
+			<div class="products__body-title js-product-title">
+				<div class="products__row">
+					<h3 class="products__name">Volvo S90</h3>
+					<div class="products__star add_to_favourites" data-id="2129">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+					</div>
+				</div>
+				<p class="products__item-text">2017 2.0  FWD 110 kW</p>
+			</div>
+			<div class="products__prop js-products-props">
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+						<p class="products__props-text">2017</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+						<p class="products__props-text">Sedans</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+						<p class="products__props-text">134 000 km</p>
+					</li>
+
+				</ul>
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+						<p class="products__props-text">FWD</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+						<p class="products__props-text">Dīzeļdegviela</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+						<p class="products__props-text">Automātiskā</p>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="products__col products__col_right">
+			<div class="products__price">
+
+				<div class="products__price-main">
+					27 490 €
+					<div class="tax-info tac">ar PVN</div>
+				</div>
+				<div class="products__price-cut">31 300 € </div>
+				<div class="products__price-calc">no € 290.09 / mēn.*</div>
+
+			</div>
+
+			<a href="/auto/volvo/volvo-s90-ford1-28092021125935">
+				<button class="btn btn_blue products__btn">Vairāk par auto</button>
+			</a>
+
+		</div>
+	</div>
+</article><article class="js-product-item products__item">
+	<a href="auto/volkswagen/volkswagen-golf-sportsvan-ford1-02122021123501">
+		<div class="products__img">
+
+				<div class="products__stick">ATLAIDE 3 810 €</div>
+
+			<!--div class="products__benefit">
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.1.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.2.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.3.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.4.svg" alt=""></div>
+			</div-->
+			<picture><img src="/assets/images/auto/2143/640x480-6220857309fbc.jpg" alt="  "></picture>
+			<div class="products__views">
+				<div class="products__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+				<div class="products__views-numb products__views-numb_first">
+					16
+				</div>
+
+			</div>
+		</div>
+	</a>
+	<div class="products__body">
+		<div class="products__col">
+			<div class="products__body-title js-product-title">
+				<div class="products__row">
+					<h3 class="products__name">Volkswagen Golf Sportsvan</h3>
+					<div class="products__star add_to_favourites" data-id="2143">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+					</div>
+				</div>
+				<p class="products__item-text">2015 1.4   92 kW</p>
+			</div>
+			<div class="products__prop js-products-props">
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+						<p class="products__props-text">2015</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+						<p class="products__props-text">Hečbeks</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+						<p class="products__props-text">75 600 km</p>
+					</li>
+
+				</ul>
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+						<p class="products__props-text">FWD</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+						<p class="products__props-text">Benzīns</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+						<p class="products__props-text">Mehāniskā</p>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="products__col products__col_right">
+			<div class="products__price">
+
+				<div class="products__price-main">
+					11 990 €
+					<div class="tax-info tac">ar PVN</div>
+				</div>
+				<div class="products__price-cut">15 800 € </div>
+				<div class="products__price-calc">no € 126.53 / mēn.*</div>
+
+			</div>
+
+			<a href="/auto/volkswagen/volkswagen-golf-sportsvan-ford1-02122021123501">
+				<button class="btn btn_blue products__btn">Vairāk par auto</button>
+			</a>
+
+		</div>
+	</div>
+</article><article class="js-product-item products__item">
+	<a href="auto/mercedes-benz/mercedes-benz-c220-jlr1-23112021163335">
+		<div class="products__img">
+
+				<div class="products__stick">ATLAIDE 3 700 €</div>
+
+			<!--div class="products__benefit">
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.1.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.2.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.3.svg" alt=""></div>
+				<div class="products__benefit-icon"><img src="/_assets/img/svg/b-icon2.4.svg" alt=""></div>
+			</div-->
+			<picture><img src="/assets/images/auto/2141/640x480-624c4a60cb133.jpg" alt="  "></picture>
+			<div class="products__views">
+				<div class="products__views-icon"><img src="/_assets/img/svg/camera.svg" alt=""></div>
+				<div class="products__views-numb products__views-numb_first">
+					20
+				</div>
+
+			</div>
+		</div>
+	</a>
+	<div class="products__body">
+		<div class="products__col">
+			<div class="products__body-title js-product-title">
+				<div class="products__row">
+					<h3 class="products__name">Mercedes-Benz c220</h3>
+					<div class="products__star add_to_favourites" data-id="2141">
+						<svg>
+							<use xlink:href="/_assets/img/sprites/sprite.svg#star"></use>
+						</svg>
+					</div>
+				</div>
+				<p class="products__item-text">2018 2.2  RWD 125 kW T-mod</p>
+			</div>
+			<div class="products__prop js-products-props">
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon1.svg" alt=""> </div>
+						<p class="products__props-text">2018</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon2.svg" alt=""> </div>
+						<p class="products__props-text">Universālis</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon3.svg" alt=""> </div>
+						<p class="products__props-text">143 088 km</p>
+					</li>
+
+				</ul>
+				<ul class="products__props">
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon4.svg" alt=""> </div>
+						<p class="products__props-text">RWD</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon5.svg" alt=""> </div>
+						<p class="products__props-text">Dīzeļdegviela</p>
+					</li>
+
+
+					<li class="products__props-row">
+						<div class="products__props-icon"> <img src="/_assets/img/svg/p-icon6.svg" alt=""> </div>
+						<p class="products__props-text">Automātiskā</p>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="products__col products__col_right">
+			<div class="products__price">
+
+				<div class="products__price-main">
+					21 290 €
+					<div class="tax-info tac">ar PVN</div>
+				</div>
+				<div class="products__price-cut">24 990 € </div>
+				<div class="products__price-calc">no € 224.67 / mēn.*</div>
+
+			</div>
+
+			<a href="/auto/mercedes-benz/mercedes-benz-c220-jlr1-23112021163335">
+				<button class="btn btn_blue products__btn">Vairāk par auto</button>
+			</a>
+
+		</div>
+	</div>
+</article>
+</div>
+<a href="/auto"><button data-anchor="#products" class="js-related-more products__more btn btn_dark">PARĀDĪT VISUS AUTO</button></a>
+				</div>
+			</section>
+			<section class="answer">
+				<div class="container">
+					<h2 class="answer__title">Kāpēc iegādāties automašīnu <span>Inchcape Certified</span> ?</h2>
+<div class="answer__block">
+	<div class="answer__item">
+		<div class="answer__icon answer__icon_first">
+			<img src="/_assets/img/svg/a-icon1.svg" alt="">
+		</div>
+		<h4 class="answer__subtitle">Padziļināta un kvalitatīva tehniskā pārbaude</h4>
+		<p class="answer__text">Automašīnas tiek pārbaudītas atbilstoši stingriem Inchcape Certified standartiem</p>
+	</div>
+	<div class="answer__item">
+		<div class="answer__icon answer__icon_second">
+			<img src="/_assets/img/svg/a-icon2.svg" alt="">
+		</div>
+		<h4 class="answer__subtitle">Visaptverošs, profesionālu pakalpojumu klāsts</h4>
+		<p class="answer__text">Finansēšana, apdrošināšana, testa braucieni, un citi pakalpojumi pieejami uz vietas</p>
+	</div>
+	<div class="answer__item">
+		<div class="answer__icon answer__icon_third">
+			<img src="/_assets/img/svg/b-icon4.svg" alt="">
+		</div>
+		<h4 class="answer__subtitle">6 mēnešu garantija</h4>
+		<p class="answer__text">Sešu mēnešu garantija visām automašīnām no Inchcape Certified</p>
+	</div>
+	<div class="answer__item">
+		<div class="answer__icon answer__icon_fourth">
+			<img src="/_assets/img/svg/a-icon3.svg" alt="">
+		</div>
+		<h4 class="answer__subtitle">Jūsu automašīnas atpirkums (Trade-In)</h4>
+		<p class="answer__text">Jūsu automašīna var kalpot kā pirmā iemaksa</p>
+	</div>
+</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer">
+    <div class="container">
+        <div class="footer__top">
+            <div class="footer__top-item">
+                <nav class="footer__nav">
+					<ul class="footer__nav-list">
+						<li><a href="buyback">Auto atpirkšana</a></li>
+						<li><a href="for-company">Uzņēmumiem</a></li>
+						<li><a href="about">Par mums</a></li>
+					</ul>
+					<ul class="footer__nav-list">
+						<li><a href="contacts">Kontakti</a></li>
+						<li><a href="favourites">Izlase</a></li>
+						<li><a href="sitemap">Vietnes karte</a></li>
+					</ul>
+					<ul class="footer__nav-list">
+						<li><a href="cookie-policy">Sīkdatņu politika</a></li>
+						<li><a href="/">Konfidencialitātes politika</a></li>
+					</ul>
+				</nav>
+            </div>
+            <div class="footer__top-item">
+				<a href="/" class="logo footer__logo">
+					<img src="/_assets/img/content/logo.png" alt="Inchcape Certified">
+				</a>
+                <div class="footer__address">
+					<address class="local-data">
+	<a href="tel:+37167828700" class="local-data__phone tel">+371 67 828 700</a>
+	<a href="https://goo.gl/maps/wyPAB93DaXUgmD1S6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">K. Ulmaņa gatvē 70</p>
+			<span class="local-data__location-map">Parādīt kartē</span>
+		</span>
+	</a>
+	<div class="local-data__time">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#clock"></use>
+		</svg>
+		<p>Pr-Se 10-18, Sv - SLĒGTS</p>
+	</div>
+</address><address class="local-data">
+	<a href="tel:+37167303000" class="local-data__phone tel">+371 67 303 000</a>
+	<a href="https://goo.gl/maps/DssPnXkArtdbuvJA6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">Skanstes iela 2A</p>
+			<span class="local-data__location-map">Parādīt kartē</span>
+		</span>
+	</a>
+	<div class="local-data__time">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#clock"></use>
+		</svg>
+		<p>Pr-Pk 9-19, Se 9-16, Sv brīvdiena</p>
+	</div>
+</address><address class="local-data">
+	<a href="tel:+37167828600" class="local-data__phone tel">+371 67 828 600</a>
+	<a href="https://goo.gl/maps/maEvFoCa5Gvn9eGE6" class="local-data__location" target="_blank">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#pin"></use>
+		</svg>
+		<span class="local-data__location-right">
+			<p class="local-data__location-text">Dārzciema iela 64A</p>
+			<span class="local-data__location-map">Parādīt kartē</span>
+		</span>
+	</a>
+	<div class="local-data__time">
+		<svg class="local-data__icon" width="16px" height="16px">
+			<use xlink:href="/_assets/img/sprites/sprite.svg#clock"></use>
+		</svg>
+		<p>Pr-Pk 9-19, Se 9-16, Sv brīvdiena</p>
+	</div>
+</address>
+				</div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__text">© 2009–2022 Inchcape Certified</p>
+            <p class="footer__text">Mājas lapas izveidošana <a href="https://4px.ru/" target="_blank">4px</a></p>
+        </div>
+    </div>
+</footer>
+<div class="scroll-top js-anchor-link" data-anchor="body">
+	<img src="/_assets/img/svg/arrow-up.svg">
+</div>
+<div class="sticky-menu">
+	<div class="sticky-menu-wrap">
+		<div class="add-phones">
+			<div class="add-phones-wrap">
+				<a href="tel:37167828700"><span class="title">Inchcape Certified Ulmaņa</span></a><a href="tel:37167303000"><span class="title">Inchcape Certified Skanstes</span></a><a href="tel:37167828600"><span class="title">Inchcape Certified Dārzciema</span></a>
+			</div>
+		</div>
+		<a href="#" class="more-phones">
+			<img src="/_assets/img/svg/sticky-phone.svg" alt="">
+			<span class="title">Sazināties</span>
+		</a>
+		<a class="mfp-modal-link" href="#OrderModal">
+			<img src="/_assets/img/svg/sticky-callback.svg" alt="">
+			<span class="title">Pieteikt zvanu</span>
+		</a>
+		<a href="/contacts">
+			<img src="/_assets/img/svg/sticky-contacts.svg" alt="">
+			<span class="title">Navigācija</span>
+		</a>
+		<a href="#" class="more-buttons">
+			<img src="/_assets/img/svg/sticky-more.svg" alt="">
+			<span class="title">Vairāk</span>
+		</a>
+		<div class="add-buttons">
+			<div class="add-buttons-wrap">
+				<a class="mfp-modal-link" href="#AppointmentModal">
+					<span class="title">Pieteikties vizītei</span>
+					<img src="/_assets/img/svg/sticky-appointment.svg" alt="">
+				</a>
+				<a class="mfp-modal-link" href="#OrderModal">
+					<span class="title">Uzzināt mana auto vērtību</span>
+					<img src="/_assets/img/svg/sticky-price.svg" alt="">
+				</a>
+				<a href="https://wa.me/message/CJQPURKY6DZ4D1">
+					<span class="title">Sazināties Whatsapp</span>
+					<img src="/_assets/img/svg/sticky-whatsapp.svg" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal mfp-modal mfp-hide" id="OrderModal">
+	<div class="modal-content">
+		<div class="modal-title">Pieprasīt zvanu</div>
+
+		<form id="OrderModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="OrderModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="оrder-a-call">
+				<input type="hidden" name="auto" value="Lexus UX 2019 2.0   112 kW Premium pluss">
+				<input type="hidden" name="dealer" value="2">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="surname" class="form-input required">
+				<input type="text" name="surname" class="form-input__input" placeholder="Uzvārds*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Nosūtīt</button>
+		</form>
+	</div>
+</div>
+<div class="modal mfp-modal mfp-hide" id="AppointmentModal">
+	<div class="modal-content">
+		<div class="modal-title">Rezervē savu vizītes laiku!</div>
+		<p class="tac">Piesaki vizīti kādā no trim Inchcape Certified autosaloniem ātri un ērti!</p>
+		<form id="AppointmentModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="AppointmentModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="make-an-appointment">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Telefons*">
+			</label>
+			<label for="date" class="form-input required">
+				<input type="text" name="date" class="form-input__input" placeholder="Datums*" autocomplete="off">
+			</label>
+			<label for="time" class="form-input required">
+				<input type="text" name="time" class="form-input__input" placeholder="Laiks*" autocomplete="off">
+			</label>
+			<div class="form-input singleselect required">
+				<div class="singleselect__clear js-singleselect__clear" data-name="dealer">
+					<svg>
+						<use xlink:href="/_assets/img/sprites/sprite.svg#close2"></use>
+					</svg>
+				</div>
+				<select id="dealer" class="singleselect__select js-single-select" name="dealer" data-name="Autocentrs*">
+					 <option value="2">Inchcape Certified Ulmaņa</option> <option value="3">Inchcape Certified Skanstes</option> <option value="1">Inchcape Certified Dārzciema</option>
+				</select>
+			</div>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue"><span>Nosūtīt</span></button>
+		</form>
+	</div>
+</div>
+
+<div id="OrderModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Pieteikums ir pieņemts, paldies</div>
+	</div>
+</div>
+<div id="AppointmentModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle"><b>Paldies! Jūsu vizītes pieteikums ir saņemts.</b></div>
+		<p class="tac">Priecāsimies Jūs redzēt Inchcape Certified - pārbaudītu un uzticamu mazlietotu auto salonā!</p>
+	</div>
+</div>
+
+		<div class="modal mfp-modal mfp-hide" id="AutoDNAModal">
+	<div class="modal-content">
+		<div class="modal-title">Pieteikums AutoDNA atskaites saņemšanai</div>
+
+		<form id="AutoDNAModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="AutoDNAModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="auto" value="Lexus UX 2019 2.0   112 kW Premium pluss">
+				<input type="hidden" name="page_path" value="order-a-report">
+				<input type="hidden" name="vin" value="JTHY65BH602032276">
+				<input type="hidden" name="dealer" value="2">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="surname" class="form-input required">
+				<input type="text" name="surname" class="form-input__input" placeholder="Uzvārds*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Nosūtīt</button>
+		</form>
+	</div>
+</div>
+		<div class="modal mfp-modal mfp-hide" id="OnlineConsultModal">
+	<div class="modal-content">
+		<h2 class="modal-title">Pieteikums ONLINE auto apskatei un konsultācijai</h2>
+		<p class="tac">Piesakieties automašīnas apskatei un konsultācijai tiešsaistē un gaidiet mūsu pārstāvja zvanu, kura laikā varēsiet vienoties par Jums ērtāko tiešsaistes saziņas kanālu un laiku.</p>
+		<p class="tac">ONLINE saziņas laikā prezentēsim automašīnu, sniegsim ziņas par tās aprīkojumu un tehnisko stāvokli, mūsu pakalpojumiem un finansēšanas iespējām, kā arī atbildes uz visiem Jūsu jautājumiem.</p>
+		<form id="OnlineConsultModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="OnlineConsultModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="online-consult">
+				<input type="hidden" name="auto" value="Lexus UX 2019 2.0   112 kW Premium pluss">
+				<input type="hidden" name="dealer" value="2">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="surname" class="form-input required">
+				<input type="text" name="surname" class="form-input__input" placeholder="Uzvārds*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Nosūtīt</button>
+		</form>
+	</div>
+</div>
+		<div class="modal mfp-modal mfp-hide" id="TestDriveModal">
+	<div class="modal-content">
+		<div class="modal-title">NOSKATĪJI AUTO?</div>
+		<div class="modal-subtitle">PIESAKTIES BEZMAKSAS TESTA BRAUCIENAM!</div>
+		<p class="tac">Piesaki sev interesējošo automobili testa braucienam un mēs parūpēsimies par laicīgu auto sagatavošanu tieši Tev!</p>
+		<form id="TestDriveModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="TestDriveModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="test-drive">
+				<input type="hidden" name="auto" value="Lexus UX 2019">
+				<input type="hidden" name="vin" value="JTHY65BH602032276">
+				<input type="hidden" name="url" value="https://certified.inchcape.lv/auto/lexus/lexus-ux-jlr1-10052022145338">
+				<input type="hidden" name="dealer" value="2">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds Uzvārds*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="date" class="form-input required">
+				<input type="text" id="date" name="date" class="form-input__input" placeholder="Datums*" autocomplete="off">
+			</label>
+			<label for="time" class="form-input required">
+				<input type="text" name="time" class="form-input__input" placeholder="Laiks*" autocomplete="off">
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Pieteikt testa braucienu</button>
+		</form>
+	</div>
+</div>
+		<div class="modal mfp-modal mfp-hide" id="FinanceLeasingModal">
+	<div class="modal-content">
+		<h2 class="modal-title">Uzzini savas auto līzinga iespējas!</h2>
+		<p class="tac">Aizpildi līzinga pieteikuma formu neizejot no mājām, un uzzini par savām iespējām iegādāties auto līzingā.</p>
+		<form id="FinanceLeasingModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="FinanceLeasingModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="leasing">
+
+				<input type="hidden" name="leasing_type" value="Fin.">
+				<input type="hidden" name="monthly_payment" value="357.73">
+				<input type="hidden" name="leasing_period" value="60">
+				<input type="hidden" name="initial_sum" value="6780">
+				<input type="hidden" name="initial_percent" value="0.2">
+				<input type="hidden" name="price" value="33900">
+				<input type="hidden" name="auto" value="Lexus UX 2019 JTHY65BH602032276">
+				<input type="hidden" name="url" value="https://certified.inchcape.lv/auto/lexus/lexus-ux-jlr1-10052022145338">
+				<input type="hidden" name="dealer" value="2">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="surname" class="form-input required">
+				<input type="text" name="surname" class="form-input__input" placeholder="Uzvārds*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<label for="comment" class="form-input">
+				<textarea type="text" name="comment" class="form-input__input textarea" rows="4" placeholder="Komentārs"></textarea>
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Iesniegt pieteikumu</button>
+		</form>
+	</div>
+</div>
+		<div class="modal mfp-modal mfp-hide" id="OperativeLeasingModal">
+	<div class="modal-content">
+		<h2 class="modal-title">Uzzini savas auto līzinga iespējas!</h2>
+		<p class="tac">Aizpildi līzinga pieteikuma formu neizejot no mājām, un uzzini par savām iespējām iegādāties auto līzingā.</p>
+		<form id="OperativeLeasingModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="OperativeLeasingModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="leasing">
+
+				<input type="hidden" name="leasing_type" value="Op.">
+				<input type="hidden" name="monthly_payment" value="355.45">
+				<input type="hidden" name="leasing_period" value="60">
+				<input type="hidden" name="initial_sum" value="6780">
+				<input type="hidden" name="initial_percent" value="0.2">
+				<input type="hidden" name="remaining_percent" value="0.3">
+				<input type="hidden" name="price" value="33900">
+				<input type="hidden" name="auto" value="Lexus UX 2019 JTHY65BH602032276">
+				<input type="hidden" name="url" value="https://certified.inchcape.lv/auto/lexus/lexus-ux-jlr1-10052022145338">
+				<input type="hidden" name="dealer" value="2">
+				<input type="hidden" name="recaptcha_response" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="surname" class="form-input required">
+				<input type="text" name="surname" class="form-input__input" placeholder="Uzvārds*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<label for="comment" class="form-input">
+				<textarea type="text" name="comment" class="form-input__input textarea " rows="4" placeholder="Komentārs"></textarea>
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Iesniegt pieteikumu</button>
+		</form>
+	</div>
+</div>
+		<div class="modal mfp-modal mfp-hide" id="SelectCarModal">
+	<div class="modal-content">
+		<div class="modal-title">Paņem mašīnu</div>
+		<form id="SelectCarModalForm" class="form" method="post" action="/modal-ajax">
+			<div class="invisible">
+				<input type="hidden" name="formid" value="SelectCarModalForm">
+				<input type="hidden" name="token" value="">
+				<input type="hidden" name="page_path" value="veikt-auto">
+				<input type="hidden" name="recaptcha_response" value="">
+				<input type="hidden" name="dealer" value="">
+				<input type="hidden" name="auto" value="">
+			</div>
+			<label for="name" class="form-input required">
+				<input type="text" name="name" class="form-input__input" placeholder="Vārds*">
+			</label>
+			<label for="surname" class="form-input required">
+				<input type="text" name="surname" class="form-input__input" placeholder="Uzvārds*">
+			</label>
+			<label for="phone" class="form-input required">
+				<input type="text" name="phone" class="form-input__input" placeholder="Tālrunis*">
+			</label>
+			<label for="email" class="form-input required">
+				<input type="text" name="email" class="form-input__input" placeholder="E-pasts*">
+			</label>
+			<div class="form__row">
+				<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms1" class="check_change" value="Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia Privātuma politikai">
+	<span>Apliecinu, ka esmu iepazinies un piekrītu Inchcape Motors Latvia <a href="https://www.inchcape.lv/privatuma-politika/" target="_blank">Privātuma politikai</a></span>
+</label>
+<label class="input-checkbox rules required">
+	<input type="checkbox" name="terms2" class="check_change" value="Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju">
+	<span>Piekrītu, ka ar mani sazinās izrādītās intereses ietvaros, izmantojot manis norādīto kontaktinformāciju</span>
+</label>
+<label class="input-checkbox rules">
+	<input type="checkbox" name="terms3" class="check_change" value="Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.">
+	<span>Piekrītu saņemt informāciju par īpašajiem piedāvājumiem, piemēram, servisa un rezerves daļu akcijām, izpārdošanām un sezonas piedāvājumiem, kā arī aksesuāru, jaunu un mazlietotu automašīnu piedāvājumiem no Inchcape Motors Latvia SIA, kā arī citus piedāvājumus e-pasta, SMS un zvana veidā.</span>
+</label>
+			</div>
+			<button type="submit" class="btn btn_blue">Nosūtīt</button>
+		</form>
+	</div>
+</div>
+
+		<div id="AutoDNAModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Pieteikums ir pieņemts, paldies</div>
+	</div>
+</div>
+		<div id="OnlineConsultModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Pieteikums ir pieņemts, paldies</div>
+	</div>
+</div>
+		<div id="TestDriveModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Paldies! Jūsu pieprasījums ir saņemts.</div>
+		<p class="tac">Priecāsimies Jūs redzēt Inchcape Certified - pārbaudītu un uzticamu mazlietotu auto salonā!</p>
+	</div>
+</div>
+		<div id="FinanceLeasingModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Pieteikums ir pieņemts, paldies</div>
+	</div>
+</div>
+		<div id="OperativeLeasingModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Pieteikums ir pieņemts, paldies</div>
+	</div>
+</div>
+		<div id="SelectCarModalFormThnx" class="modal mfp-modal mfp-hide">
+	<div class="modal-content">
+		<div class="modal-subtitle">Pieteikums ir pieņemts, paldies</div>
+	</div>
+</div>
+
+		<link rel="stylesheet" type="text/css" href="/_assets/libs/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="/_assets/libs/slick/slick-theme.css">
+<link rel="stylesheet" href="/_assets/libs/multiple-select/multiple-select.min.css">
+<link rel="stylesheet" href="/_assets/libs/magnific/magnific-popup.css">
+<link rel="stylesheet" href="/_assets/libs/range-slider/ion.rangeSlider.min.css">
+<link rel="stylesheet" href="/_assets/libs/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/_assets/libs/datepicker/datepicker.css">
+<link rel="stylesheet" href="/_assets/libs/timepicker/timepicker.css">
+
+<link rel="stylesheet" href="/_test.css">
+
+<script defer="" src="/_assets/libs/flexmenu/modernizr.custom.js"></script>
+<script defer="" src="/_assets/libs/flexmenu/flexmenu.js"></script>
+<script defer="" src="/_assets/libs/maskedinput.min.js"></script>
+<script defer="" src="/_assets/libs/multiple-select/multiple-select.min.js"></script>
+<script defer="" src="/_assets/libs/slick/slick.min.js"></script>
+<script defer="" src="/_assets/libs/magnific/jquery.magnific-popup.min.js"></script>
+<script defer="" src="/_assets/libs/fancybox/jquery.fancybox.min.js"></script>
+<script defer="" src="/_assets/libs/range-slider/ion.rangeSlider.min.js"></script>
+<script defer="" src="/_assets/libs/timepicker/timepicker.js"></script>
+<script src="/_assets/libs/datepicker/datepicker.js"></script>
+<script defer="" src="/_assets/js/main.js"></script>
+
+</body></html>

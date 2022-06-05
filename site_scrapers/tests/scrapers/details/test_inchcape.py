@@ -10,7 +10,34 @@ THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
 
 class UtilsTestCase(unittest.TestCase):
-    def test_tiguan(self) -> None:
+    def test_lexus_ux(self) -> None:
+        with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_lexus_ux.html")) as car:
+            self.assertEqual(Success(
+                CarFull(
+                    url='https://certified.inchcape.lv/auto/lexus/lexus-ux-jlr1-10052022145338',
+                    previewImgSrc='https://certified.inchcape.lv/assets/images/auto/2450/627b8f3221975.jpg',
+                    summary='Lexus UX 2019 2.0   112 kW Premium pluss, 19 500 km',
+                    date=CarDate(month='00', year='2019'),
+                    type='SUV',
+                    transmission='Automātiskā',
+                    hp='112 kW',
+                    price=33900,
+                    vin='JTHY65BH602032276',
+                    registrationNo=None,
+                    mileage=19500,
+                    engineSize=1987,
+                    techInspDate=None,
+                    fuelType='hybrid',
+                    body='suv',
+                    drivetrain='fwd',
+                    color=None,
+                    hasWarranty=True,
+                    doors=None,
+                    country='lv',
+                    dealer='inchcape',
+                )), scrape_inchcape_car_detail(car.read()))
+
+    def test_vw_tiguan(self) -> None:
         with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_vw_tiguan.html")) as car:
             self.assertEqual(Success(CarFull(
                 url='https://certified.inchcape.lv/auto/volkswagen/volkswagen-tiguan-ford1-07042022132402',
