@@ -10,6 +10,7 @@ from site_scrapers.scrapers.utils import find_one, find_many
 
 from site_scrapers.models.Car import CarDate, CarFull, FuelType, BodyType, Drivetrain
 
+
 @safe
 def scrape_inchcape_car_detail(html: str) -> CarFull:
     soup = Soup(html)
@@ -49,8 +50,8 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
     date = features["Izlaiduma gads"].split("-")
 
     price = flow(
-        find_one("div", {"class": "product-card__price"})(soup),
-        bind(find_one("span", {"class": "new"})),
+        find_one("div", {"class": "product-card__price"}, True)(soup),
+        lambda _: _.bind(find_one("span", {"class": "new"})),
         lambda _: _.bind(lambda _: _.text),
         parse_int
     )

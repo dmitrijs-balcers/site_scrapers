@@ -10,6 +10,32 @@ THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
 
 class UtilsTestCase(unittest.TestCase):
+    def test_tiguan_x6m(self) -> None:
+        with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_vw_tiguan.html")) as car:
+            self.assertEqual(Success(CarFull(
+                url='https://certified.inchcape.lv/auto/volkswagen/volkswagen-tiguan-2018-20-awd-110-kw-ford1-15102021154948',
+                previewImgSrc='https://certified.inchcape.lv/assets/images/auto/34148/6184fc2570830.jpg',
+                summary='Volkswagen Tiguan 2018 2.0  AWD 110 kW, 102200 km',
+                date=CarDate(month='03', year='2018'),
+                type='SUV',
+                transmission='Automātiskā',
+                hp='110 kW',
+                price=27990,
+                vin='WVGZZZ5NZJW389548',
+                registrationNo=None,
+                mileage=102200,
+                engineSize=None,
+                techInspDate=None,
+                fuelType='diesel',
+                body='suv',
+                drivetrain='awd',
+                color=None,
+                hasWarranty=True,
+                doors=None,
+                country='lv',
+                dealer='inchcape',
+            )), scrape_inchcape_car_detail(car.read()))
+
     def test_bmw_x6m(self) -> None:
         with open(os.path.join(THIS_FOLDER, "inchcape/inchcape_bmw_x6m.html")) as car:
             self.assertEqual(Success(CarFull(
@@ -87,7 +113,6 @@ class UtilsTestCase(unittest.TestCase):
                 country='lv',
                 dealer='inchcape'
             )), scrape_inchcape_car_detail(car.read()))
-
 
 
 if __name__ == '__main__':
