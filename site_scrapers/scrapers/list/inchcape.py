@@ -22,5 +22,5 @@ def fetch_inchcape_urls(page: int = 1) -> Iterable[str]:
             lambda _: _.map(lambda _: f"https://certified.inchcape.lv/{_.attrs['href']}"),
             lambda _: _.bind(lambda _: _)
         ) for car in _]),
-        bind(lambda _: _)
+        lambda _: _.bind(lambda _: _)
     )
