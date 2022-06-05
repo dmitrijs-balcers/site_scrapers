@@ -43,15 +43,16 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
     features = flow(
         find_many("div", {"class": "car-props__list-right"})(soup),
         lambda _: _.map(lambda fs: [get_feature(feature) for feature in fs]),
-        lambda _: _.bind(lambda _: dict(_))
+        lambda _: _.bind(dict)
     )
 
     date = features["Izlaiduma gads"].split("-")
 
     price = flow(
-        find_one("div", {"class": "car-props__cost"}, True)(soup),
-        lambda _: _.bind(lambda _: _.text),
-        parse_int
+        soup,
+        find_one("div", {"class": "car-props__cost"}, True),
+        lambda _: _.map(lambda _: _.text),
+        lambda _: _.bind(parse_int)
     )
 
     def get_info(feature: Soup) -> Tuple[str, str]:
