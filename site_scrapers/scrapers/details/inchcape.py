@@ -1,9 +1,11 @@
+# !!!IMPORTANT!!!
+#
+# Use no JS Mode to get HTML!!!!
 import re
 from typing import Tuple, Optional
 
 from gazpacho import Soup
 from returns.pipeline import flow
-from returns.pointfree import bind
 from returns.result import safe
 
 from site_scrapers.scrapers.utils import find_one, find_many
@@ -107,7 +109,7 @@ def parse_fuel_type(fuelType: Optional[str]) -> Optional[FuelType]:
         return "petrol"
     if fuelType == "Dīzeļdegviela":
         return "diesel"
-    if fuelType == "Plug-in Hibrīds":
+    if fuelType == "Hibrīds":
         return "hybrid"
     return None
 
