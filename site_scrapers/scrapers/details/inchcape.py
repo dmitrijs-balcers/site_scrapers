@@ -51,7 +51,7 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
 
     price = flow(
         find_one("div", {"class": "product-card__price"}, True)(soup),
-        lambda _: _.bind(find_one("span", {"class": "new"})),
+        bind(find_one("span", {"class": "new"})),
         lambda _: _.bind(lambda _: _.text),
         parse_int
     )
