@@ -17,32 +17,31 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
 
     url = flow(
         soup,
-        find_one("link", {"rel": "canonical"}),
-        lambda _: _.bind(lambda _: _.attrs["href"].replace("lv//", "lv/")),
+        find_one("input", {"type": "hidden", "name": "url"}),
+        lambda _: _.bind(lambda _: _.attrs["value"]),
     )
 
     previewImg = flow(
         soup,
-        find_one("div", {"class": "product-card__image-wrap"}),
-        lambda _: _.bind(lambda _: _.attrs["data-src"]),
+        find_one("a", {"class": "gallery__item"}, True),
+        lambda _: _.bind(lambda _: _.attrs["href"]),
     )
 
     summary = flow(
-        find_one("h1", {"class": "product-card__title title-2"})(soup),
-        lambda _: _.bind(lambda _: find_one("span")(_)),
+        find_one("h1", {"class": "title"})(soup),
         lambda _: _.bind(lambda _: _.text)
     )
 
     def get_feature(feature: Soup) -> Tuple[str, str]:
-        name: str = flow(find_one("div", {"class": "product-card__feature-label"})(feature),
+        name: str = flow(find_one("span", {"class": "car-props__list-key"}, True)(feature),
                          lambda _: _.bind(lambda _: _.text))
-        value: str = flow(find_one("div", {"class": "product-card__feature-value"})(feature),
+        value: str = flow(find_one("div", {"class": "car-props__list-val"}, True)(feature),
                           lambda _: _.bind(lambda _: _.text))
 
         return name, value
 
     features = flow(
-        find_many("div", {"class": "product-card__feature"})(soup),
+        find_many("div", {"class": "car-props__list-right"})(soup),
         lambda _: _.map(lambda fs: [get_feature(feature) for feature in fs]),
         lambda _: _.bind(lambda _: dict(_))
     )
@@ -50,22 +49,21 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
     date = features["Izlaiduma gads"].split("-")
 
     price = flow(
-        find_one("div", {"class": "product-card__price"}, True)(soup),
-        bind(find_one("span", {"class": "new"})),
+        find_one("div", {"class": "car-props__cost"}, True)(soup),
         lambda _: _.bind(lambda _: _.text),
         parse_int
     )
 
     def get_info(feature: Soup) -> Tuple[str, str]:
-        name: str = flow(find_one("div", {"class": "product-info__option-label"})(feature),
+        name: str = flow(find_one("div", {"class": "insert-tab__tech-key"})(feature),
                          lambda _: _.bind(lambda _: _.text))
-        value: str = flow(find_one("div", {"class": "product-info__option-value"})(feature),
+        value: str = flow(find_one("div", {"class": "insert-tab__tech-val"})(feature),
                           lambda _: _.bind(lambda _: _.text))
 
         return name, value
 
     info = flow(
-        find_many("div", {"class": "product-info__option"})(soup),
+        find_many("li", {"class": "insert-tab__tech-row"}, True)(soup),
         lambda _: _.map(lambda _: [get_info(information) for information in _]),
         lambda _: _.bind(lambda _: dict(_))
     )
@@ -74,15 +72,15 @@ def scrape_inchcape_car_detail(html: str) -> CarFull:
         url=url,
         previewImgSrc="https://certified.inchcape.lv" + previewImg,
         summary=summary,
-        date=CarDate(date[1], date[0]),
+        date=CarDate("00", date[0]),
         type=features.get("Virsbūves tips"),
         transmission=features.get("Pārnesumkārba"),
-        hp=re.findall("[0-9]+\skW|[0-9]+\shp", summary)[0],
+        hp=re.findall("[0-9]+\s?kW|[0-9]+\shp", summary, flags=re.IGNORECASE)[0],
         price=price or -1,
         vin=info.get("VIN"),
         registrationNo=None,
         mileage=parse_int(features.get("Nobraukums")),
-        engineSize=None,
+        engineSize=parse_int(features.get("Dzinēja tilpums")),
         techInspDate=None,
         fuelType=parse_fuel_type(features.get("Dzinējs")),
         body=parse_body(features.get("Virsbūves tips")),
@@ -116,7 +114,7 @@ def parse_fuel_type(fuelType: Optional[str]) -> Optional[FuelType]:
 def parse_body(body: Optional[str]) -> Optional[BodyType]:
     if body == "Sedans":
         return "sedan"
-    if body == "Universāls":
+    if body == "Universālis":
         return "wagon"
     if body == "Pikaps":
         return "pickup"
